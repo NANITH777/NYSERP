@@ -1,0 +1,53 @@
+﻿@model LanguageVM
+@using NYS_ERP.Helper
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Edit Language</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-body p-4">
+    <form method="post" class="row" enctype="multipart/form-data">
+        <div class="border p-3">
+            <!-- Language Code Field (readonly for Edit) -->
+            <div class="form-floating py-2 col-12">
+                <input type="text" id="languageCode" asp-for="Language.LANCODE" class="form-control border-0 shadow" readonly />
+                <label asp-for="Language.LANCODE" class="ms-2"></label>
+                <span asp-validation-for="Language.LANCODE" class="text-danger"></span>
+            </div>
+
+            <!-- Language Text Field -->
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Language.LANTEXT" class="form-control border-0 shadow" />
+                <label asp-for="Language.LANTEXT" class="ms-2"></label>
+                <span asp-validation-for="Language.LANTEXT" class="text-danger"></span>
+            </div>
+
+            <!-- Company Dropdown -->
+            <div class="form-floating py-2 col-12">
+                <select asp-for="Language.COMCODE" asp-items="Model.CompanyList" class="form-select border-0 shadow" disabled>
+                    <option value="" disabled selected>-- Select Company --</option>
+                </select>
+                <label asp-for="Language.COMCODE" class="ms-2"></label>
+                <span asp-validation-for="Language.COMCODE" class="text-danger"></span>
+            </div>
+            <!-- Hidden field for COMCODE -->
+            <input type="hidden" asp-for="Language.COMCODE" />
+
+            <!-- Submit and Back Buttons -->
+            <div class="row mt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Save Changes</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Language" asp-action="Index" class="btn btn-secondary border form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

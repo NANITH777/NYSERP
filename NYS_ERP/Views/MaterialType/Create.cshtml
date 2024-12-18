@@ -1,0 +1,76 @@
+﻿@model MaterialTVM
+@using NYS_ERP.Helper
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Create Material</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body p-4">
+    <form method="post" class="row" enctype="multipart/form-data">
+        <div class="border p-3">
+            <div class="form-floating py-2 col-12">
+                <input type="text" asp-for="MaterialType.DOCTYPE" class="form-control border-0 shadow" />
+                <label asp-for="MaterialType.DOCTYPE" class="ms-2"></label>
+                <span asp-validation-for="MaterialType.DOCTYPE" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input type="text" asp-for="MaterialType.DOCTYPETEXT" class="form-control border-0 shadow" />
+                <label asp-for="MaterialType.DOCTYPETEXT" class="ms-2"></label>
+                <span asp-validation-for="MaterialType.DOCTYPETEXT" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <select id="mainUnitDropdown" asp-for="MaterialType.ISPASSIVE" class="form-select border-0 shadow">
+                    <option value="" disabled selected>-- Select MaterialType Status --</option>
+                    <option value="0">Hayır</option>
+                    <option value="1">Evet</option>
+                </select>
+                <label asp-for="MaterialType.ISPASSIVE" class="ms-2"></label>
+                <span asp-validation-for="MaterialType.ISPASSIVE" class="text-danger"></span>
+            </div>
+            <!-- Company Dropdown -->
+            <div class="form-floating py-2 col-12">
+                <select asp-for="MaterialType.COMCODE" asp-items="Model.CompanyList" class="form-select border-0 shadow">
+                    <option value="" disabled selected>-- Select Company --</option>
+                </select>
+                <label asp-for="MaterialType.COMCODE" class="ms-2"></label>
+                <span asp-validation-for="MaterialType.COMCODE" class="text-danger"></span>
+            </div>
+            <!-- Submit and Back Buttons -->
+            <div class="row mt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">
+                        Create
+                    </button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="MaterialType" asp-action="Index" class="btn btn-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - NYS_ERP</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/NYS_ERP.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.default-v2.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <link href="~/lib/select2/css/select2.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" />
+        @RenderSection("Styles", required: false)
+        <style>
+            .navbar {
+                background-color: white !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+
+            .navbar-brand {
+                color: var(--primary-color) !important;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar-brand img {
+                margin-right: 10px;
+            }
+
+            .sidebar-footer {
+                padding-top: 20px;
+                border-top: 1px solid #e9ecef;
+            }
+            .close-app-btn {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #ff6b6b;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            .close-app-btn i {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    
+                    <div class="logo">
+                        <img src="img/erp.png" alt="NYS ERP Logo" style="width: 40px; height: 40px;" class="rounded-circle mr-2">
+                        <span>NYS</span>ERP
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="position-absolute start-50 translate-middle-x">
+                    <a href="/" class="btn btn-primary btn-lg shadow-sm rounded-pill">
+                        <i class="bi bi-house-door-fill me-2"></i>
+                        Home
+                    </a>
+                </div>
+
+                <div class="sidebar-footer">
+                    <button class="close-app-btn" onclick="window.close()">
+                        <i class="bi bi-power"></i>
+                        <span>Close App</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+                <partial name="_Notification" />
+            </main>
+        </div>
+
+        <footer class="advanced-footer">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h3>NYSERP</h3>
+                        <p>Enterprise Resource Planning Solution</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="/">Dashboard</a></li>
+                                <li><a href="/Company">Companies</a></li>
+                                <li><a href="/MaterialType">Materials</a></li>
+                                <li><a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Support</h4>
+                            <ul>
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">Contact Support</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">System Status</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Legal</h4>
+                            <ul>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Data Protection</a></li>
+                                <li><a href="#">Compliance</a></li>
+                                <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        <p>&copy; @DateTime.Now.Year NYS_ERP. All Rights Reserved.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/lib/select2/js/select2.full.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+        <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+        <script type="text/javascript" src="~/js/notify.min.js"></script>
+        <script src="~/js/script-custom-calendar.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</html>

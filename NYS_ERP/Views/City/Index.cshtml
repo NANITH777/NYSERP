@@ -1,0 +1,65 @@
+﻿@model List<City>
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row align-items-center">
+            <div class="col-1">
+                <a href="javascript:history.go(-1);" class="btn btn-outline-light btn-lg rounded-circle shadow-sm back-button">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-10 text-center">
+                <h2 class="text-white py-2">City List</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
+<div class="card-body p-4">
+    <div class="row pb-3">
+        <div class="col-6">
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="City" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New City
+            </a>
+        </div>
+    </div>
+
+    <table id="tblData" class="table table-bordered table-striped">
+        <thead class="text-center">
+            <tr>
+                <th>City Code</th>
+                <th>City Name</th>
+                <th>Country Code</th>
+                <th>Company Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.CITYCODE))
+            {
+                <tr>
+                    <td>@obj.CITYCODE</td>
+                    <td>@obj.CITYTEXT</td>
+                    <td>@obj.COUNTRYCODE</td>
+                    <td>@obj.COMCODE</td>
+                    <td>
+                        <div class="w-100 btn-group" role="group">
+
+                            <a asp-controller="City" asp-action="Upsert" asp-route-cityCode="@obj.CITYCODE" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="City" asp-action="Delete" asp-route-cityCode="@obj.CITYCODE" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @section Scripts {
+        <script src="~/js/cities.js"></script>
+    }
+</div>

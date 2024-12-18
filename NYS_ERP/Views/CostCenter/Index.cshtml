@@ -1,0 +1,44 @@
+﻿@model List<CostCenter>
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row align-items-center">
+            <div class="col-1">
+                <a href="javascript:history.go(-1);" class="btn btn-outline-light btn-lg rounded-circle shadow-sm back-button">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-10 text-center">
+                <h2 class="text-white py-2">Cost Center List</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
+<div class="card-body p-4">
+    <div class="row pb-3">
+        <div class="col-6">
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="CostCenter" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Cost Center
+            </a>
+        </div>
+    </div>
+
+
+    <table id="tblData" class="table table-bordered table-striped">
+        <thead class="text-center">
+            <tr>
+                <th>Cost Center Type</th>
+                <th>Cost Center Type Description</th>
+                <th>Is it Passive</th>
+                <th>Company Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+    @section Scripts {
+        <script src="~/js/cocenter.js"></script>
+    }
+</div>

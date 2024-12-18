@@ -1,0 +1,41 @@
+﻿@model CountryVM
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-danger bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-primary text-white">Delete Country</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body p-4">
+    <form method="post">
+        <input asp-for="Country.COUNTRYCODE" type="hidden" />
+        <div class="border p-3 mt-4">
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Country.COUNTRYCODE" disabled class="form-control border-0 shadow bg-light" />
+                <label asp-for="Country.COUNTRYCODE" class="ms-2"></label>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Country.COUNTRYTEXT" disabled class="form-control border-0 shadow bg-light" />
+                <label asp-for="Country.COUNTRYTEXT" class="ms-2"></label>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Country.Company.COMTEXT" disabled class="form-control border-0 shadow bg-light" />
+                <label asp-for="Country.Company.COMTEXT" class="ms-2"></label>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-danger form-control">Delete</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Country" asp-action="Index" class="btn btn-secondary border form-control">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

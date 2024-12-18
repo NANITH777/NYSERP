@@ -1,0 +1,53 @@
+﻿@model CountryVM
+@using NYS_ERP.Helper
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Edit Country</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-body p-4">
+    <form method="post" class="row" enctype="multipart/form-data">
+        <div class="border p-3">
+            <!-- Country Code Field (readonly for Edit) -->
+            <div class="form-floating py-2 col-12">
+                <input type="text" id="languageCode" asp-for="Country.COUNTRYCODE" class="form-control border-0 shadow" readonly />
+                <label asp-for="Country.COUNTRYCODE" class="ms-2"></label>
+                <span asp-validation-for="Country.COUNTRYCODE" class="text-danger"></span>
+            </div>
+
+            <!-- Country Text Field -->
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Country.COUNTRYTEXT" class="form-control border-0 shadow" />
+                <label asp-for="Country.COUNTRYTEXT" class="ms-2"></label>
+                <span asp-validation-for="Country.COUNTRYTEXT" class="text-danger"></span>
+            </div>
+
+            <!-- Company Dropdown -->
+            <div class="form-floating py-2 col-12">
+                <select asp-for="Country.COMCODE" asp-items="Model.CompanyList" class="form-select border-0 shadow" disabled>
+                    <option value="" disabled selected>-- Select Company --</option>
+                </select>
+                <label asp-for="Country.COMCODE" class="ms-2"></label>
+                <span asp-validation-for="Country.COMCODE" class="text-danger"></span>
+            </div>
+            <!-- Hidden field for COMCODE -->
+            <input type="hidden" asp-for="Country.COMCODE" />
+
+            <!-- Submit and Back Buttons -->
+            <div class="row mt-3">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Save Changes</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Country" asp-action="Index" class="btn btn-secondary border form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
