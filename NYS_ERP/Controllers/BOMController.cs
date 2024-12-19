@@ -34,7 +34,7 @@ namespace NYS_ERP.Controllers
                 }),
                 BOM = new BOM()
             };
-            BOMVM.BOM.DOCTYPE = GenerateUniqueUnitCode();
+            BOMVM.BOM.BOMDOCTYPE = GenerateUniqueUnitCode();
             return View(BOMVM);
         }
 
@@ -45,10 +45,10 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var existingBOM = _unitOfWork.BOM.Get(u => u.DOCTYPE == BOMVM.BOM.DOCTYPE);
+                    var existingBOM = _unitOfWork.BOM.Get(u => u.BOMDOCTYPE == BOMVM.BOM.BOMDOCTYPE);
                     if (existingBOM != null)
                     {
-                        ModelState.AddModelError("BOM.DOCTYPE", "A document type with this code already exists.");
+                        ModelState.AddModelError("BOM.BOMDOCTYPE", "A document type with this code already exists.");
 
                         BOMVM.CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                         {
@@ -58,9 +58,9 @@ namespace NYS_ERP.Controllers
                         return View(BOMVM);
                     }
 
-                    if (string.IsNullOrEmpty(BOMVM.BOM.DOCTYPE))
+                    if (string.IsNullOrEmpty(BOMVM.BOM.BOMDOCTYPE))
                     {
-                        BOMVM.BOM.DOCTYPE = GenerateUniqueUnitCode();
+                        BOMVM.BOM.BOMDOCTYPE = GenerateUniqueUnitCode();
                     }
 
                     _unitOfWork.BOM.Add(BOMVM.BOM);
@@ -100,7 +100,7 @@ namespace NYS_ERP.Controllers
                 })
             };
 
-            BOMVM.BOM = _unitOfWork.BOM.Get(u => u.DOCTYPE == BOMCode);
+            BOMVM.BOM = _unitOfWork.BOM.Get(u => u.BOMDOCTYPE == BOMCode);
             if (BOMVM.BOM == null)
             {
                 return NotFound();
@@ -115,13 +115,13 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var BOMFromDb = _unitOfWork.BOM.Get(u => u.DOCTYPE == BOMVM.BOM.DOCTYPE);
+                    var BOMFromDb = _unitOfWork.BOM.Get(u => u.BOMDOCTYPE == BOMVM.BOM.BOMDOCTYPE);
                     if (BOMFromDb == null)
                     {
                         return NotFound();
                     }
 
-                    BOMFromDb.DOCTYPETEXT = BOMVM.BOM.DOCTYPETEXT;
+                    BOMFromDb.BOMDOCNUM = BOMVM.BOM.BOMDOCNUM;
                     BOMFromDb.ISPASSIVE = BOMVM.BOM.ISPASSIVE;
 
                     _unitOfWork.BOM.Update(BOMFromDb);
@@ -149,16 +149,16 @@ namespace NYS_ERP.Controllers
 
         private string GenerateUniqueUnitCode()
         {
-            var lastOperation = _unitOfWork.Operation.GetAll()
-                .OrderByDescending(l => l.DOCTYPE)
+            var lastBOM = _unitOfWork.BOM.GetAll()
+                .OrderByDescending(l => l.BOMDOCTYPE)
                 .FirstOrDefault();
 
-            if (lastOperation == null)
+            if (lastBOM == null)
             {
                 return "UR01"; 
             }
 
-            string numericPart = lastOperation.DOCTYPE.Substring(2); 
+            string numericPart = lastBOM.BOMDOCTYPE.Substring(2); 
             int nextNumber = int.Parse(numericPart) + 1;
 
             return $"UR{nextNumber:D2}"; 
@@ -168,7 +168,7 @@ namespace NYS_ERP.Controllers
         {
             var BOMVM = new BOMVM
             {
-                BOM = _unitOfWork.BOM.Get(u => u.DOCTYPE == BOMCode, includeProperties: "Company"),
+                BOM = _unitOfWork.BOM.Get(u => u.BOMDOCTYPE == BOMCode, includeProperties: "Company"),
                 CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                 {
                     Text = a.COMTEXT,
@@ -187,7 +187,7 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(BOMVM BOMVM)
         {
-            var ccToDelete = _unitOfWork.BOM.Get(u => u.DOCTYPE == BOMVM.BOM.DOCTYPE);
+            var ccToDelete = _unitOfWork.BOM.Get(u => u.BOMDOCTYPE == BOMVM.BOM.BOMDOCTYPE);
 
             if (ccToDelete == null)
             {
@@ -211,8 +211,8 @@ namespace NYS_ERP.Controllers
 
             var formattedData = objMTList.Select(u => new
             {
-                BOMCode = u.DOCTYPE,  
-                BOMText = u.DOCTYPETEXT,
+                BOMCode = u.BOMDOCTYPE,  
+                BOMText = u.BOMDOCNUM,
                 isPassive = u.ISPASSIVE,
                 companyText = u.Company.COMCODE  
             }).ToList();

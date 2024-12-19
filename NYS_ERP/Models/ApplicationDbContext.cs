@@ -18,6 +18,9 @@ namespace NYS_ERP.Models
         public DbSet<Rota> Rotas { get; set; }
         public DbSet<WorkCenter> WorkCenters { get; set; }
         public DbSet<Operation> Operations { get; set; }
+        //public DbSet<MaterialHeader> MaterialHeaders { get; set; }
+        //public DbSet<MaterialText> MaterialTexts { get; set; }
+        //public DbSet<RotaAna> RotaAnas { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -158,6 +161,40 @@ namespace NYS_ERP.Models
             modelBuilder.Entity<Operation>()
             .Property(l => l.RowVersion)
             .IsRowVersion();
+
+
+            //// Configuration de MaterialHeader
+            //modelBuilder.Entity<MaterialHeader>()
+            //.HasKey(m => new {
+            //    m.COMCODE,
+            //    m.DOCTYPE,
+            //    m.DOCTYPETEXT,
+            //    m.ValidityStart,
+            //    m.ValidityEnd
+            //});
+
+            //// Configuration de MaterialText
+            //modelBuilder.Entity<MaterialText>()
+            //.HasKey(m => new {
+            //    m.CompanyCode,
+            //    m.MaterialDocType,
+            //    m.MaterialCode,
+            //    m.ValidityStart,
+            //    m.ValidityEnd,
+            //    m.LanguageCode
+            //});
+
+            //// Relation entre MaterialHeader et MaterialText
+            //modelBuilder.Entity<MaterialText>()
+            //.HasOne(mt => mt.MaterialHeader)
+            //.WithMany(mh => mh.Translations)
+            //.HasForeignKey(mt => new {
+            //    mt.CompanyCode,
+            //    mt.MaterialDocType,
+            //    mt.MaterialCode,
+            //    mt.ValidityStart,
+            //    mt.ValidityEnd
+            //});
         }
     
     }

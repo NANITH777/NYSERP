@@ -17,6 +17,8 @@ namespace NYS_ERP.Repository
         public IRotaRepository Rota { get; private set; }
         public IWorkCenterRepository WorkCenter { get; private set; }
         public IOperationRepository Operation { get; private set; }
+        //public IMaterialHeaderRepository MaterialHeader { get; private set; }
+        //public IMaterialTextRepository MaterialText { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -32,6 +34,8 @@ namespace NYS_ERP.Repository
             Rota = new RotaRepository(_db);
             WorkCenter = new WorkCenterRepository(_db);
             Operation = new OperationRepository(_db);
+            //MaterialHeader = new MaterialHeaderRepository(_db);
+            //MaterialText = new MaterialTextRepository(_db);
         }
         public void Save()
         {

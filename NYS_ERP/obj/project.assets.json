@@ -7601,11 +7601,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ERP\\NYS_ERP\\NYS_ERP.csproj",
+      "projectUniqueName": "D:\\NYSERP\\NYS_ERP\\NYS_ERP.csproj",
       "projectName": "NYS_ERP",
-      "projectPath": "D:\\ERP\\NYS_ERP\\NYS_ERP.csproj",
+      "projectPath": "D:\\NYSERP\\NYS_ERP\\NYS_ERP.csproj",
       "packagesPath": "C:\\Users\\Fulchany NANITH\\.nuget\\packages\\",
-      "outputPath": "D:\\ERP\\NYS_ERP\\obj\\",
+      "outputPath": "D:\\NYSERP\\NYS_ERP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fulchany NANITH\\AppData\\Roaming\\NuGet\\NuGet.Config",

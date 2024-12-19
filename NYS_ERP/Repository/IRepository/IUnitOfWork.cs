@@ -13,6 +13,8 @@
         IRotaRepository Rota { get; }
         IWorkCenterRepository WorkCenter { get; }
         IOperationRepository Operation { get; }
+        //IMaterialHeaderRepository MaterialHeader { get; }
+        //IMaterialTextRepository MaterialText { get; }
         void Save();
     }
 }

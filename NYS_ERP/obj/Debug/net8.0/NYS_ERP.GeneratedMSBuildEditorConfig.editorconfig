@@ -17,219 +17,219 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NYS_ERP
 build_property.RootNamespace = NYS_ERP
-build_property.ProjectDir = D:\ERP\NYS_ERP\
+build_property.ProjectDir = D:\NYSERP\NYS_ERP\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\ERP\NYS_ERP
+build_property.MSBuildProjectDirectory = D:\NYSERP\NYS_ERP
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/ERP/NYS_ERP/Views/BOM/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/BOM/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/BOM/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/BOM/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/BOM/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/BOM/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/BOM/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/BOM/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/City/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/City/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/City/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/City/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/City/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/City/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/City/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/City/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Company/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Company/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Company/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Company/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Company/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Company/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Company/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Company/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/CostCenter/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/CostCenter/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdENlbnRlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/CostCenter/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/CostCenter/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdENlbnRlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/CostCenter/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/CostCenter/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdENlbnRlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/CostCenter/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/CostCenter/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdENlbnRlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Country/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Country/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Country/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Country/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Country/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Country/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Country/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Country/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Home/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Home/Privacy.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Language/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Language/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Language/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Language/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Language/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Language/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Language/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Language/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/MaterialType/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/MaterialType/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxUeXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/MaterialType/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/MaterialType/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxUeXBlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/MaterialType/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/MaterialType/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxUeXBlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/MaterialType/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/MaterialType/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxUeXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Operation/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Operation/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0aW9uXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Operation/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Operation/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0aW9uXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Operation/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Operation/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0aW9uXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Operation/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Operation/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Rota/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Rota/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Rota/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Rota/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Rota/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Rota/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Rota/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Rota/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Shared/Error.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Shared/_Notification.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Shared/_Notification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Unit/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Unit/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Unit/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Unit/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Unit/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Unit/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Unit/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Unit/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/WorkCenter/Create.cshtml]
+[D:/NYSERP/NYS_ERP/Views/WorkCenter/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0NlbnRlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/WorkCenter/Delete.cshtml]
+[D:/NYSERP/NYS_ERP/Views/WorkCenter/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0NlbnRlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/WorkCenter/Edit.cshtml]
+[D:/NYSERP/NYS_ERP/Views/WorkCenter/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0NlbnRlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/WorkCenter/Index.cshtml]
+[D:/NYSERP/NYS_ERP/Views/WorkCenter/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0NlbnRlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/_ViewImports.cshtml]
+[D:/NYSERP/NYS_ERP/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/_ViewStart.cshtml]
+[D:/NYSERP/NYS_ERP/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ERP/NYS_ERP/Views/Shared/_Layout.cshtml]
+[D:/NYSERP/NYS_ERP/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-hj28zlkgj5
