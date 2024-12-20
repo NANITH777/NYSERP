@@ -14,14 +14,14 @@
     <form method="post" class="row" enctype="multipart/form-data">
         <div class="border p-3">
             <div class="form-floating py-2 col-12">
-                <input type="text" asp-for="WorkCenter.DOCTYPE" class="form-control border-0 shadow" />
-                <label asp-for="WorkCenter.DOCTYPE" class="ms-2"></label>
-                <span asp-validation-for="WorkCenter.DOCTYPE" class="text-danger"></span>
+                <input type="text" asp-for="WorkCenter.WCMDOCTYPE" class="form-control border-0 shadow" />
+                <label asp-for="WorkCenter.WCMDOCTYPE" class="ms-2"></label>
+                <span asp-validation-for="WorkCenter.WCMDOCTYPE" class="text-danger"></span>
             </div>
             <div class="form-floating py-2 col-12">
-                <input type="text" asp-for="WorkCenter.DOCTYPETEXT" class="form-control border-0 shadow" />
-                <label asp-for="WorkCenter.DOCTYPETEXT" class="ms-2"></label>
-                <span asp-validation-for="WorkCenter.DOCTYPETEXT" class="text-danger"></span>
+                <input type="text" asp-for="WorkCenter.WCMDOCNUM" class="form-control border-0 shadow" />
+                <label asp-for="WorkCenter.WCMDOCNUM" class="ms-2"></label>
+                <span asp-validation-for="WorkCenter.WCMDOCNUM" class="text-danger"></span>
             </div>
             <div class="form-floating py-2 col-12">
                 <select id="mainUnitDropdown" asp-for="WorkCenter.ISPASSIVE" class="form-select border-0 shadow">

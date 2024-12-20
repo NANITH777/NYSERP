@@ -18,6 +18,7 @@ namespace NYS_ERP.Models
         public DbSet<Rota> Rotas { get; set; }
         public DbSet<WorkCenter> WorkCenters { get; set; }
         public DbSet<Operation> Operations { get; set; }
+        public DbSet<CostCenterAna> CostCenterAnas { get; set; }
         //public DbSet<MaterialHeader> MaterialHeaders { get; set; }
         //public DbSet<MaterialText> MaterialTexts { get; set; }
         //public DbSet<RotaAna> RotaAnas { get; set; }
@@ -195,7 +196,59 @@ namespace NYS_ERP.Models
             //    mt.ValidityStart,
             //    mt.ValidityEnd
             //});
+
+
+            modelBuilder.Entity<CostCenterAna>(entity =>
+            {
+                entity.HasKey(e => new
+                {
+                    e.COMCODE,
+                    e.CCMDOCTYPE,
+                    e.CCMDOCNUM,
+                    e.CCMDOCFROM,
+                    e.CCMDOCUNTIL,
+                    e.LANCODE
+                });
+
+                entity.HasOne(e => e.Company)
+                    .WithMany()
+                    .HasForeignKey(e => e.COMCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.CostCenter)
+                    .WithMany()
+                    .HasForeignKey(e => new { e.CCMDOCTYPE })
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Language)
+                    .WithMany()
+                    .HasForeignKey(e => e.LANCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(e => e.RowVersion)
+                    .IsRowVersion();
+            });
+
+            //// Configuration for CostCenter (assuming this is the structure)
+            //modelBuilder.Entity<CostCenter>(entity =>
+            //{
+            //    // Configure composite primary key for CostCenter
+            //    entity.HasKey(e => new { e.CCMDOCTYPE, e.CCMDOCNUM });
+            //});
+
+            //// Configuration for Company
+            //modelBuilder.Entity<Company>(entity =>
+            //{
+            //    entity.HasKey(e => e.COMCODE);
+            //});
+
+            //// Configuration for Language
+            //modelBuilder.Entity<Language>(entity =>
+            //{
+            //    entity.HasKey(e => e.LANCODE);
+            //});
         }
-    
     }
+    
+    
 }

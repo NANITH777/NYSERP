@@ -33,7 +33,7 @@ namespace NYS_ERP.Controllers
                 }),
                 MaterialType = new MaterialType()
             };
-            materialTVM.MaterialType.DOCTYPE = GenerateUniqueUnitCode();
+            materialTVM.MaterialType.MATDOCTYPE = GenerateUniqueUnitCode();
             return View(materialTVM);
         }
 
@@ -44,10 +44,10 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var existingMaterial = _unitOfWork.MaterialType.Get(u => u.DOCTYPE == MaterialTVM.MaterialType.DOCTYPE);
+                    var existingMaterial = _unitOfWork.MaterialType.Get(u => u.MATDOCTYPE == MaterialTVM.MaterialType.MATDOCTYPE);
                     if (existingMaterial != null)
                     {
-                        ModelState.AddModelError("MaterialType.DOCTYPE", "A document type with this code already exists.");
+                        ModelState.AddModelError("MaterialType.MATDOCTYPE", "A document type with this code already exists.");
 
                         MaterialTVM.CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                         {
@@ -57,9 +57,9 @@ namespace NYS_ERP.Controllers
                         return View(MaterialTVM);
                     }
 
-                    if (string.IsNullOrEmpty(MaterialTVM.MaterialType.DOCTYPE))
+                    if (string.IsNullOrEmpty(MaterialTVM.MaterialType.MATDOCTYPE))
                     {
-                        MaterialTVM.MaterialType.DOCTYPE = GenerateUniqueUnitCode();
+                        MaterialTVM.MaterialType.MATDOCTYPE = GenerateUniqueUnitCode();
                     }
 
                     _unitOfWork.MaterialType.Add(MaterialTVM.MaterialType);
@@ -99,7 +99,7 @@ namespace NYS_ERP.Controllers
                 })
             };
 
-            MaterialTVM.MaterialType = _unitOfWork.MaterialType.Get(u => u.DOCTYPE == mtCode);
+            MaterialTVM.MaterialType = _unitOfWork.MaterialType.Get(u => u.MATDOCTYPE == mtCode);
             if (MaterialTVM.MaterialType == null)
             {
                 return NotFound();
@@ -114,13 +114,13 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var MaterialFromDb = _unitOfWork.MaterialType.Get(u => u.DOCTYPE == MaterialTVM.MaterialType.DOCTYPE);
+                    var MaterialFromDb = _unitOfWork.MaterialType.Get(u => u.MATDOCTYPE == MaterialTVM.MaterialType.MATDOCTYPE);
                     if (MaterialFromDb == null)
                     {
                         return NotFound();
                     }
 
-                    MaterialFromDb.DOCTYPETEXT = MaterialTVM.MaterialType.DOCTYPETEXT;
+                    MaterialFromDb.MATDOCNUM = MaterialTVM.MaterialType.MATDOCNUM;
                     MaterialFromDb.ISPASSIVE = MaterialTVM.MaterialType.ISPASSIVE;
 
                     _unitOfWork.MaterialType.Update(MaterialFromDb);
@@ -148,7 +148,7 @@ namespace NYS_ERP.Controllers
         private string GenerateUniqueUnitCode()
         {
             var lastMT = _unitOfWork.MaterialType.GetAll()
-                .OrderByDescending(l => l.DOCTYPE)
+                .OrderByDescending(l => l.MATDOCTYPE)
                 .FirstOrDefault();
 
             if (lastMT == null)
@@ -156,7 +156,7 @@ namespace NYS_ERP.Controllers
                 return "MT01";
             }
 
-            string numericPart = lastMT.DOCTYPE.Substring(3);
+            string numericPart = lastMT.MATDOCTYPE.Substring(3);
             int nextNumber = int.Parse(numericPart) + 1;
 
             return $"MT{nextNumber:D2}";
@@ -167,7 +167,7 @@ namespace NYS_ERP.Controllers
         {
             var materialTVM = new MaterialTVM
             {
-                MaterialType = _unitOfWork.MaterialType.Get(u => u.DOCTYPE == mtCode, includeProperties: "Company"),
+                MaterialType = _unitOfWork.MaterialType.Get(u => u.MATDOCTYPE == mtCode, includeProperties: "Company"),
                 CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                 {
                     Text = a.COMTEXT,
@@ -186,7 +186,7 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(MaterialTVM materialTVM)
         {
-            var mtToDelete = _unitOfWork.MaterialType.Get(u => u.DOCTYPE == materialTVM.MaterialType.DOCTYPE);
+            var mtToDelete = _unitOfWork.MaterialType.Get(u => u.MATDOCTYPE == materialTVM.MaterialType.MATDOCTYPE);
 
             if (mtToDelete == null)
             {
@@ -210,8 +210,8 @@ namespace NYS_ERP.Controllers
 
             var formattedData = objMTList.Select(u => new
             {
-                mtCode = u.DOCTYPE,  
-                mtText = u.DOCTYPETEXT,
+                mtCode = u.MATDOCTYPE,  
+                mtText = u.MATDOCNUM,
                 isPassive = u.ISPASSIVE,
                 companyText = u.Company.COMCODE  
             }).ToList();

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NYS_ERP.Models;
 
@@ -11,9 +12,11 @@ using NYS_ERP.Models;
 namespace NYS_ERP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241219082359_ChangeCCVariables")]
+    partial class ChangeCCVariables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,68 +178,6 @@ namespace NYS_ERP.Migrations
                     b.HasIndex("COMCODE");
 
                     b.ToTable("CostCenters");
-                });
-
-            modelBuilder.Entity("NYS_ERP.Models.CostCenterAna", b =>
-                {
-                    b.Property<string>("COMCODE")
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("CCMDOCTYPE")
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("CCMDOCNUM")
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<DateTime>("CCMDOCFROM")
-                        .HasColumnType("DATE");
-
-                    b.Property<DateTime>("CCMDOCUNTIL")
-                        .HasColumnType("DATE");
-
-                    b.Property<string>("LANCODE")
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<string>("CCMLTEXT")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<string>("CCMSTEXT")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<bool>("ISDELETED")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ISPASSIVE")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MAINCCMDOCNUM")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<string>("MAINCCMDOCTYPE")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("COMCODE", "CCMDOCTYPE", "CCMDOCNUM", "CCMDOCFROM", "CCMDOCUNTIL", "LANCODE");
-
-                    b.HasIndex("CCMDOCTYPE");
-
-                    b.HasIndex("LANCODE");
-
-                    b.ToTable("CostCenterAnas");
                 });
 
             modelBuilder.Entity("NYS_ERP.Models.Country", b =>
@@ -556,33 +497,6 @@ namespace NYS_ERP.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("NYS_ERP.Models.CostCenterAna", b =>
-                {
-                    b.HasOne("NYS_ERP.Models.CostCenter", "CostCenter")
-                        .WithMany()
-                        .HasForeignKey("CCMDOCTYPE")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("NYS_ERP.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("COMCODE")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("NYS_ERP.Models.Language", "Language")
-                        .WithMany()
-                        .HasForeignKey("LANCODE")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("CostCenter");
-
-                    b.Navigation("Language");
                 });
 
             modelBuilder.Entity("NYS_ERP.Models.Country", b =>

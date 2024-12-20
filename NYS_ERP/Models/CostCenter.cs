@@ -8,10 +8,10 @@ namespace NYS_ERP.Models
     {
         [Key]
         [StringLength(4)]
-        public string DOCTYPE { get; set; }
+        public string CCMDOCTYPE { get; set; }
 
         [StringLength(80)]
-        public string DOCTYPETEXT { get; set; }
+        public string CCMDOCNUM { get; set; }
 
         public int ISPASSIVE { get; set; }
         [StringLength(4)]

@@ -14,14 +14,14 @@
     <form method="post" class="row" enctype="multipart/form-data">
         <div class="border p-3">
             <div class="form-floating py-2 col-12">
-                <input type="text" asp-for="Rota.DOCTYPE" class="form-control border-0 shadow" readonly />
-                <label asp-for="Rota.DOCTYPE" class="ms-2"></label>
-                <span asp-validation-for="Rota.DOCTYPE" class="text-danger"></span>
+                <input type="text" asp-for="Rota.ROTDOCTYPE" class="form-control border-0 shadow" readonly />
+                <label asp-for="Rota.ROTDOCTYPE" class="ms-2"></label>
+                <span asp-validation-for="Rota.ROTDOCTYPE" class="text-danger"></span>
             </div>
             <div class="form-floating py-2 col-12">
-                <input asp-for="Rota.DOCTYPETEXT" class="form-control border-0 shadow" />
-                <label asp-for="Rota.DOCTYPETEXT" class="ms-2"></label>
-                <span asp-validation-for="Rota.DOCTYPETEXT" class="text-danger"></span>
+                <input asp-for="Rota.ROTDOCNUM" class="form-control border-0 shadow" />
+                <label asp-for="Rota.ROTDOCNUM" class="ms-2"></label>
+                <span asp-validation-for="Rota.ROTDOCNUM" class="text-danger"></span>
             </div>
             <div class="form-floating py-2 col-12">
                 <select id="mainUnitDropdown" asp-for="Rota.ISPASSIVE" class="form-select border-0 shadow">

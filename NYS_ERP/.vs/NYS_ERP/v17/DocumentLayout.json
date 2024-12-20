@@ -3,28 +3,52 @@
   "WorkspaceRootPath": "D:\\NYSERP\\NYS_ERP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\bom\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\bom\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\bom\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\bom\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\models\\costcenterana.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:models\\costcenterana.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\bom\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\bom\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\bom\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\bom\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\costcenterana\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\costcenterana\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\models\\bom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:models\\bom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\controllers\\costcenteranacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:controllers\\costcenteranacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\views\\company\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:views\\company\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\models\\viewmodels\\costcenteranavm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:models\\viewmodels\\costcenteranavm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\controllers\\citycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:controllers\\citycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\wwwroot\\js\\cities.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:wwwroot\\js\\cities.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\models\\costcenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:models\\costcenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\repository\\ccrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:repository\\ccrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,12 +59,8 @@
       "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:repository\\irepository\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\models\\materialheader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:models\\materialheader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\controllers\\bomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:controllers\\bomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|d:\\nyserp\\nys_erp\\repository\\irepository\\iccrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F24BACD1-7ECF-45D8-AB57-6E8C067759D2}|NYS_ERP.csproj|solutionrelative:repository\\irepository\\iccrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,132 +78,197 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\BOM\\Index.cshtml",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Index.cshtml",
-              "RelativeToolTip": "Views\\BOM\\Index.cshtml",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-19T06:25:10.778Z",
+              "WhenOpened": "2024-12-20T13:44:32.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\BOM\\Edit.cshtml",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Edit.cshtml",
-              "RelativeToolTip": "Views\\BOM\\Edit.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\CostCenterAna\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\CostCenterAna\\Index.cshtml",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\CostCenterAna\\Index.cshtml",
+              "RelativeToolTip": "Views\\CostCenterAna\\Index.cshtml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-19T06:25:02.313Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Delete.cshtml",
-              "RelativeDocumentMoniker": "Views\\BOM\\Delete.cshtml",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Delete.cshtml",
-              "RelativeToolTip": "Views\\BOM\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-19T06:24:50.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\BOM\\Create.cshtml",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\BOM\\Create.cshtml",
-              "RelativeToolTip": "Views\\BOM\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-19T06:24:19.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BOM.cs",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\BOM.cs",
-              "RelativeDocumentMoniker": "Models\\BOM.cs",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\BOM.cs",
-              "RelativeToolTip": "Models\\BOM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T06:16:11.088Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BOMController.cs",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Controllers\\BOMController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BOMController.cs",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Controllers\\BOMController.cs",
-              "RelativeToolTip": "Controllers\\BOMController.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAiwJwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T06:15:52.554Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Models\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Models\\ApplicationDbContext.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAcwBMAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:14:17.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MaterialHeader.cs",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\MaterialHeader.cs",
-              "RelativeDocumentMoniker": "Models\\MaterialHeader.cs",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\MaterialHeader.cs",
-              "RelativeToolTip": "Models\\MaterialHeader.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAAAIkAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:08:29.193Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Repository\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "Repository\\UnitOfWork.cs",
-              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Repository\\UnitOfWork.cs",
-              "RelativeToolTip": "Repository\\UnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:04:59.827Z",
+              "WhenOpened": "2024-12-20T13:41:05.797Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "CityController.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Controllers\\CityController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CityController.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Controllers\\CityController.cs",
+              "RelativeToolTip": "Controllers\\CityController.cs",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAIwPcAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T13:36:01.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "cities.js",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\cities.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\cities.js",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\cities.js",
+              "RelativeToolTip": "wwwroot\\js\\cities.js",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwCQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-20T13:33:08.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\Company\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Company\\Index.cshtml",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\Company\\Index.cshtml",
+              "RelativeToolTip": "Views\\Company\\Index.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAcwEwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-20T13:23:55.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CostCenterAnaController.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Controllers\\CostCenterAnaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CostCenterAnaController.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Controllers\\CostCenterAnaController.cs",
+              "RelativeToolTip": "Controllers\\CostCenterAnaController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T13:20:17.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAJYAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-20T12:59:43.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CostCenter.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\CostCenter.cs",
+              "RelativeDocumentMoniker": "Models\\CostCenter.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\CostCenter.cs",
+              "RelativeToolTip": "Models\\CostCenter.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T12:19:03.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Repository\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Repository\\UnitOfWork.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Repository\\UnitOfWork.cs",
+              "RelativeToolTip": "Repository\\UnitOfWork.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAmwCUAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T12:11:02.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Repository\\IRepository\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "Repository\\IRepository\\IUnitOfWork.cs",
               "ToolTip": "D:\\NYSERP\\NYS_ERP\\Repository\\IRepository\\IUnitOfWork.cs",
               "RelativeToolTip": "Repository\\IRepository\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAzwBAAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAowA8AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:04:18.876Z",
+              "WhenOpened": "2024-12-20T12:10:28.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Models\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAkwPYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T12:09:41.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CCRepository.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Repository\\CCRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\CCRepository.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Repository\\CCRepository.cs",
+              "RelativeToolTip": "Repository\\CCRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAywA8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T12:08:37.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ICCRepository.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Repository\\IRepository\\ICCRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IRepository\\ICCRepository.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Repository\\IRepository\\ICCRepository.cs",
+              "RelativeToolTip": "Repository\\IRepository\\ICCRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T12:07:37.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CostCenterAnaVM.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\ViewModels\\CostCenterAnaVM.cs",
+              "RelativeDocumentMoniker": "Models\\ViewModels\\CostCenterAnaVM.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\ViewModels\\CostCenterAnaVM.cs",
+              "RelativeToolTip": "Models\\ViewModels\\CostCenterAnaVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T12:00:58.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CostCenterAna.cs",
+              "DocumentMoniker": "D:\\NYSERP\\NYS_ERP\\Models\\CostCenterAna.cs",
+              "RelativeDocumentMoniker": "Models\\CostCenterAna.cs",
+              "ToolTip": "D:\\NYSERP\\NYS_ERP\\Models\\CostCenterAna.cs",
+              "RelativeToolTip": "Models\\CostCenterAna.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAiwDoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T09:25:56.03Z",
               "EditorCaption": ""
             }
           ]

@@ -34,7 +34,7 @@ namespace NYS_ERP.Controllers
                 }),
                 CostCenter = new CostCenter()
             };
-            costCenterVM.CostCenter.DOCTYPE = GenerateUniqueUnitCode();
+            costCenterVM.CostCenter.CCMDOCTYPE = GenerateUniqueUnitCode();
             return View(costCenterVM);
         }
 
@@ -45,10 +45,10 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var existingCostCenter = _unitOfWork.CostCenter.Get(u => u.DOCTYPE == costCenterVM.CostCenter.DOCTYPE);
+                    var existingCostCenter = _unitOfWork.CostCenter.Get(u => u.CCMDOCTYPE == costCenterVM.CostCenter.CCMDOCTYPE);
                     if (existingCostCenter != null)
                     {
-                        ModelState.AddModelError("CostCenter.DOCTYPE", "A cost center with this code already exists.");
+                        ModelState.AddModelError("CostCenter.CCMDOCTYPE", "A cost center with this code already exists.");
 
                         costCenterVM.CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                         {
@@ -58,9 +58,9 @@ namespace NYS_ERP.Controllers
                         return View(costCenterVM);
                     }
 
-                    if (string.IsNullOrEmpty(costCenterVM.CostCenter.DOCTYPE))
+                    if (string.IsNullOrEmpty(costCenterVM.CostCenter.CCMDOCTYPE))
                     {
-                        costCenterVM.CostCenter.DOCTYPE = GenerateUniqueUnitCode();
+                        costCenterVM.CostCenter.CCMDOCTYPE = GenerateUniqueUnitCode();
                     }
 
                     _unitOfWork.CostCenter.Add(costCenterVM.CostCenter);
@@ -100,7 +100,7 @@ namespace NYS_ERP.Controllers
                 })
             };
 
-            costCenterVM.CostCenter = _unitOfWork.CostCenter.Get(u => u.DOCTYPE == ccCode);
+            costCenterVM.CostCenter = _unitOfWork.CostCenter.Get(u => u.CCMDOCTYPE == ccCode);
             if (costCenterVM.CostCenter == null)
             {
                 return NotFound();
@@ -115,13 +115,13 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var costCenterFromDb = _unitOfWork.CostCenter.Get(u => u.DOCTYPE == costCenterVM.CostCenter.DOCTYPE);
+                    var costCenterFromDb = _unitOfWork.CostCenter.Get(u => u.CCMDOCTYPE == costCenterVM.CostCenter.CCMDOCTYPE);
                     if (costCenterFromDb == null)
                     {
                         return NotFound();
                     }
 
-                    costCenterFromDb.DOCTYPETEXT = costCenterVM.CostCenter.DOCTYPETEXT;
+                    costCenterFromDb.CCMDOCNUM = costCenterVM.CostCenter.CCMDOCNUM;
                     costCenterFromDb.ISPASSIVE = costCenterVM.CostCenter.ISPASSIVE;
 
                     _unitOfWork.CostCenter.Update(costCenterFromDb);
@@ -149,7 +149,7 @@ namespace NYS_ERP.Controllers
         private string GenerateUniqueUnitCode()
         {
             var lastCC = _unitOfWork.CostCenter.GetAll()
-                .OrderByDescending(l => l.DOCTYPE)
+                .OrderByDescending(l => l.CCMDOCTYPE)
                 .FirstOrDefault();
 
             if (lastCC == null)
@@ -157,7 +157,7 @@ namespace NYS_ERP.Controllers
                 return "CC01";
             }
 
-            string numericPart = lastCC.DOCTYPE.Substring(3);
+            string numericPart = lastCC.CCMDOCTYPE.Substring(3);
             int nextNumber = int.Parse(numericPart) + 1;
 
             return $"CC{nextNumber:D2}";
@@ -167,7 +167,7 @@ namespace NYS_ERP.Controllers
         {
             var costCenterVM = new CostCenterVM
             {
-                CostCenter = _unitOfWork.CostCenter.Get(u => u.DOCTYPE == ccCode, includeProperties: "Company"),
+                CostCenter = _unitOfWork.CostCenter.Get(u => u.CCMDOCTYPE == ccCode, includeProperties: "Company"),
                 CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                 {
                     Text = a.COMTEXT,
@@ -186,7 +186,7 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(CostCenterVM costCenterVM)
         {
-            var ccToDelete = _unitOfWork.CostCenter.Get(u => u.DOCTYPE == costCenterVM.CostCenter.DOCTYPE);
+            var ccToDelete = _unitOfWork.CostCenter.Get(u => u.CCMDOCTYPE == costCenterVM.CostCenter.CCMDOCTYPE);
 
             if (ccToDelete == null)
             {
@@ -210,8 +210,8 @@ namespace NYS_ERP.Controllers
 
             var formattedData = objMTList.Select(u => new
             {
-                ccCode = u.DOCTYPE,  
-                ccText = u.DOCTYPETEXT,
+                ccCode = u.CCMDOCTYPE,  
+                ccText = u.CCMDOCNUM,
                 isPassive = u.ISPASSIVE,
                 companyText = u.Company.COMCODE  
             }).ToList();

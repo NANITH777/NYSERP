@@ -33,7 +33,7 @@ namespace NYS_ERP.Controllers
                 }),
                 Rota = new Rota()
             };
-            RotaVM.Rota.DOCTYPE = GenerateUniqueUnitCode();
+            RotaVM.Rota.ROTDOCTYPE = GenerateUniqueUnitCode();
             return View(RotaVM);
         }
 
@@ -44,10 +44,10 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var existingRota = _unitOfWork.Rota.Get(u => u.DOCTYPE == RotaVM.Rota.DOCTYPE);
+                    var existingRota = _unitOfWork.Rota.Get(u => u.ROTDOCTYPE == RotaVM.Rota.ROTDOCTYPE);
                     if (existingRota != null)
                     {
-                        ModelState.AddModelError("Rota.DOCTYPE", "A document type with this code already exists.");
+                        ModelState.AddModelError("Rota.ROTDOCTYPE", "A document type with this code already exists.");
 
                         RotaVM.CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                         {
@@ -57,9 +57,9 @@ namespace NYS_ERP.Controllers
                         return View(RotaVM);
                     }
 
-                    if (string.IsNullOrEmpty(RotaVM.Rota.DOCTYPE))
+                    if (string.IsNullOrEmpty(RotaVM.Rota.ROTDOCTYPE))
                     {
-                        RotaVM.Rota.DOCTYPE = GenerateUniqueUnitCode();
+                        RotaVM.Rota.ROTDOCTYPE = GenerateUniqueUnitCode();
                     }
 
                     _unitOfWork.Rota.Add(RotaVM.Rota);
@@ -100,7 +100,7 @@ namespace NYS_ERP.Controllers
                 })
             };
 
-            RotaVM.Rota = _unitOfWork.Rota.Get(u => u.DOCTYPE == rotaCode);
+            RotaVM.Rota = _unitOfWork.Rota.Get(u => u.ROTDOCTYPE == rotaCode);
             if (RotaVM.Rota == null)
             {
                 return NotFound();
@@ -115,13 +115,13 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var RotaFromDb = _unitOfWork.Rota.Get(u => u.DOCTYPE == RotaVM.Rota.DOCTYPE);
+                    var RotaFromDb = _unitOfWork.Rota.Get(u => u.ROTDOCTYPE == RotaVM.Rota.ROTDOCTYPE);
                     if (RotaFromDb == null)
                     {
                         return NotFound();
                     }
 
-                    RotaFromDb.DOCTYPETEXT = RotaVM.Rota.DOCTYPETEXT;
+                    RotaFromDb.ROTDOCNUM = RotaVM.Rota.ROTDOCNUM;
                     RotaFromDb.ISPASSIVE = RotaVM.Rota.ISPASSIVE;
 
                     _unitOfWork.Rota.Update(RotaFromDb);
@@ -148,7 +148,7 @@ namespace NYS_ERP.Controllers
         private string GenerateUniqueUnitCode()
         {
             var lastRT = _unitOfWork.Rota.GetAll()
-                .OrderByDescending(l => l.DOCTYPE)
+                .OrderByDescending(l => l.ROTDOCTYPE)
                 .FirstOrDefault();
 
             if (lastRT == null)
@@ -156,7 +156,7 @@ namespace NYS_ERP.Controllers
                 return "RT01";
             }
 
-            string numericPart = lastRT.DOCTYPE.Substring(3);
+            string numericPart = lastRT.ROTDOCTYPE.Substring(3);
             int nextNumber = int.Parse(numericPart) + 1;
 
             return $"RT{nextNumber:D2}";
@@ -167,7 +167,7 @@ namespace NYS_ERP.Controllers
         {
             var RotaVM = new RotaVM
             {
-                Rota = _unitOfWork.Rota.Get(u => u.DOCTYPE == rotaCode, includeProperties: "Company"),
+                Rota = _unitOfWork.Rota.Get(u => u.ROTDOCTYPE == rotaCode, includeProperties: "Company"),
                 CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                 {
                     Text = a.COMTEXT,
@@ -186,7 +186,7 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(RotaVM RotaVM)
         {
-            var RTToDelete = _unitOfWork.Rota.Get(u => u.DOCTYPE == RotaVM.Rota.DOCTYPE);
+            var RTToDelete = _unitOfWork.Rota.Get(u => u.ROTDOCTYPE == RotaVM.Rota.ROTDOCTYPE);
 
             if (RTToDelete == null)
             {
@@ -210,8 +210,8 @@ namespace NYS_ERP.Controllers
 
             var formattedData = objMTList.Select(u => new
             {
-                rotaCode = u.DOCTYPE,  
-                rotaText = u.DOCTYPETEXT,
+                rotaCode = u.ROTDOCTYPE,  
+                rotaText = u.ROTDOCNUM,
                 isPassive = u.ISPASSIVE,
                 companyText = u.Company.COMCODE  
             }).ToList();

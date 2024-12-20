@@ -1,4 +1,4 @@
-﻿@model List<Company>
+﻿@model List<CostCenterAna>
 
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
@@ -9,19 +9,20 @@
                 </a>
             </div>
             <div class="col-10 text-center">
-                <h2 class="text-white py-2">Company List</h2>
+                <h2 class="text-white py-2">Cost Center Ana List</h2>
             </div>
             <div class="col-1"></div>
         </div>
     </div>
 </div>
+
 <div class="card-body p-4">
     <div class="row pb-3">
         <div class="col-6">
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Company" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Create New Company
+            <a asp-controller="CostCenterAna" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Cost Center Ana
             </a>
         </div>
     </div>
@@ -30,26 +31,34 @@
         <thead class="text-center">
             <tr>
                 <th>Company Code</th>
-                <th>Company Name</th>
-                <th>Adress 1</th>
-                <th>Address 2</th>
+                <th>Document Type</th>
+                <th>Document Number</th>
+                <th>Document From</th>
+                <th>Document Until</th>
+                <th>Language Code</th>
+                <th>Is Deleted</th>
+                <th>Is Passive</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var company in Model)
+            @foreach (var item in Model)
             {
                 <tr>
-                    <td>@company.COMCODE</td>
-                    <td>@company.COMTEXT</td>
-                    <td>@company.ADDRESS1</td>
-                    <td>@company.ADDRESS2</td>
+                    <td>@item.COMCODE</td>
+                    <td>@item.CCMDOCTYPE</td>
+                    <td>@item.CCMDOCNUM</td>
+                    <td>@item.CCMDOCFROM.ToString("yyyy-MM-dd")</td>
+                    <td>@item.CCMDOCUNTIL.ToString("yyyy-MM-dd")</td>
+                    <td>@item.LANCODE</td>
+                    <td>@item.ISDELETED</td>
+                    <td>@item.ISPASSIVE</td>
                     <td class="text-center">
-                        <a asp-controller="Company" asp-action="Edit" asp-route-id="@company.COMCODE" class="btn btn-sm btn-primary">
+                        <a asp-controller="CostCenterAna" asp-action="Edit" asp-route-id="@item.CCMDOCNUM" class="btn btn-sm btn-primary">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
-                        <a asp-controller="Company" asp-action="Delete" asp-route-id="@company.COMCODE" class="btn btn-sm btn-danger">
-                            <i class="bi bi-trash-fill"></i>Delete
+                        <a asp-controller="CostCenterAna" asp-action="Delete" asp-route-id="@item.CCMDOCNUM" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash-fill"></i> Delete
                         </a>
                     </td>
                 </tr>
@@ -59,7 +68,6 @@
 </div>
 
 @section Scripts {
-    
     <script>
         $(document).ready(function () {
             $('#tblData').DataTable({

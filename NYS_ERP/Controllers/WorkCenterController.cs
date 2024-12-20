@@ -33,7 +33,7 @@ namespace NYS_ERP.Controllers
                 }),
                 WorkCenter = new WorkCenter()
             };
-            workCenterVM.WorkCenter.DOCTYPE = GenerateUniqueUnitCode();
+            workCenterVM.WorkCenter.WCMDOCTYPE = GenerateUniqueUnitCode();
             return View(workCenterVM);
         }
 
@@ -44,10 +44,10 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var existingWorkCenter = _unitOfWork.WorkCenter.Get(u => u.DOCTYPE == workCenterVM.WorkCenter.DOCTYPE);
+                    var existingWorkCenter = _unitOfWork.WorkCenter.Get(u => u.WCMDOCTYPE == workCenterVM.WorkCenter.WCMDOCTYPE);
                     if (existingWorkCenter != null)
                     {
-                        ModelState.AddModelError("WorkCenter.DOCTYPE", "A work center with this code already exists.");
+                        ModelState.AddModelError("WorkCenter.WCMDOCTYPE", "A work center with this code already exists.");
 
                         workCenterVM.CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                         {
@@ -57,9 +57,9 @@ namespace NYS_ERP.Controllers
                         return View(workCenterVM);
                     }
 
-                    if (string.IsNullOrEmpty(workCenterVM.WorkCenter.DOCTYPE))
+                    if (string.IsNullOrEmpty(workCenterVM.WorkCenter.WCMDOCTYPE))
                     {
-                        workCenterVM.WorkCenter.DOCTYPE = GenerateUniqueUnitCode();
+                        workCenterVM.WorkCenter.WCMDOCTYPE = GenerateUniqueUnitCode();
                     }
 
                     _unitOfWork.WorkCenter.Add(workCenterVM.WorkCenter);
@@ -100,7 +100,7 @@ namespace NYS_ERP.Controllers
                 })
             };
 
-            workCenterVM.WorkCenter = _unitOfWork.WorkCenter.Get(u => u.DOCTYPE == wcCode);
+            workCenterVM.WorkCenter = _unitOfWork.WorkCenter.Get(u => u.WCMDOCTYPE == wcCode);
             if (workCenterVM.WorkCenter == null)
             {
                 return NotFound();
@@ -115,13 +115,13 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var workCenterFromDb = _unitOfWork.WorkCenter.Get(u => u.DOCTYPE == workCenterVM.WorkCenter.DOCTYPE);
+                    var workCenterFromDb = _unitOfWork.WorkCenter.Get(u => u.WCMDOCTYPE == workCenterVM.WorkCenter.WCMDOCTYPE);
                     if (workCenterFromDb == null)
                     {
                         return NotFound();
                     }
 
-                    workCenterFromDb.DOCTYPETEXT = workCenterVM.WorkCenter.DOCTYPETEXT;
+                    workCenterFromDb.WCMDOCNUM = workCenterVM.WorkCenter.WCMDOCNUM;
                     workCenterFromDb.ISPASSIVE = workCenterVM.WorkCenter.ISPASSIVE;
 
                     _unitOfWork.WorkCenter.Update(workCenterFromDb);
@@ -147,7 +147,7 @@ namespace NYS_ERP.Controllers
         private string GenerateUniqueUnitCode()
         {
             var lastWC = _unitOfWork.WorkCenter.GetAll()
-                .OrderByDescending(l => l.DOCTYPE)
+                .OrderByDescending(l => l.WCMDOCTYPE)
                 .FirstOrDefault();
 
             if (lastWC == null)
@@ -155,7 +155,7 @@ namespace NYS_ERP.Controllers
                 return "WC01";
             }
 
-            string numericPart = lastWC.DOCTYPE.Substring(2);
+            string numericPart = lastWC.WCMDOCTYPE.Substring(2);
             int nextNumber = int.Parse(numericPart) + 1;
 
             return $"WC{nextNumber:D2}";
@@ -165,7 +165,7 @@ namespace NYS_ERP.Controllers
         {
             var workCenterVM = new WorkCenterVM
             {
-                WorkCenter = _unitOfWork.WorkCenter.Get(u => u.DOCTYPE == wcCode, includeProperties: "Company"),
+                WorkCenter = _unitOfWork.WorkCenter.Get(u => u.WCMDOCTYPE == wcCode, includeProperties: "Company"),
                 CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                 {
                     Text = a.COMTEXT,
@@ -184,7 +184,7 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(WorkCenterVM workCenterVM)
         {
-            var ccToDelete = _unitOfWork.WorkCenter.Get(u => u.DOCTYPE == workCenterVM.WorkCenter.DOCTYPE);
+            var ccToDelete = _unitOfWork.WorkCenter.Get(u => u.WCMDOCTYPE == workCenterVM.WorkCenter.WCMDOCTYPE);
 
             if (ccToDelete == null)
             {
@@ -208,8 +208,8 @@ namespace NYS_ERP.Controllers
 
             var formattedData = objMTList.Select(u => new
             {
-                wcCode = u.DOCTYPE,  
-                wcText = u.DOCTYPETEXT,
+                wcCode = u.WCMDOCTYPE,  
+                wcText = u.WCMDOCNUM,
                 isPassive = u.ISPASSIVE,
                 companyText = u.Company.COMCODE  
             }).ToList();

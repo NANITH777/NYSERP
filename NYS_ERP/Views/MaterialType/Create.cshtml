@@ -14,14 +14,14 @@
     <form method="post" class="row" enctype="multipart/form-data">
         <div class="border p-3">
             <div class="form-floating py-2 col-12">
-                <input type="text" asp-for="MaterialType.DOCTYPE" class="form-control border-0 shadow" />
-                <label asp-for="MaterialType.DOCTYPE" class="ms-2"></label>
-                <span asp-validation-for="MaterialType.DOCTYPE" class="text-danger"></span>
+                <input type="text" asp-for="MaterialType.MATDOCTYPE" class="form-control border-0 shadow" />
+                <label asp-for="MaterialType.MATDOCTYPE" class="ms-2"></label>
+                <span asp-validation-for="MaterialType.MATDOCTYPE" class="text-danger"></span>
             </div>
             <div class="form-floating py-2 col-12">
-                <input type="text" asp-for="MaterialType.DOCTYPETEXT" class="form-control border-0 shadow" />
-                <label asp-for="MaterialType.DOCTYPETEXT" class="ms-2"></label>
-                <span asp-validation-for="MaterialType.DOCTYPETEXT" class="text-danger"></span>
+                <input type="text" asp-for="MaterialType.MATDOCNUM" class="form-control border-0 shadow" />
+                <label asp-for="MaterialType.MATDOCNUM" class="ms-2"></label>
+                <span asp-validation-for="MaterialType.MATDOCNUM" class="text-danger"></span>
             </div>
             <div class="form-floating py-2 col-12">
                 <select id="mainUnitDropdown" asp-for="MaterialType.ISPASSIVE" class="form-select border-0 shadow">
