@@ -14,8 +14,8 @@
         IWorkCenterRepository WorkCenter { get; }
         IOperationRepository Operation { get; }
         ICCRepository CostCenterAna { get; }
-        //IMaterialHeaderRepository MaterialHeader { get; }
-        //IMaterialTextRepository MaterialText { get; }
+        IMaterialRepository Material {  get; }
+        IWCRepository WorkCenterAna { get; }
         void Save();
     }
 }

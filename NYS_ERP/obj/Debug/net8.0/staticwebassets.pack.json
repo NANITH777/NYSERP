@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\js\\wocenter.js"
     },
     {
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\workCenterAna.js",
+      "PackagePath": "staticwebassets\\js\\workCenterAna.js"
+    },
+    {
       "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },

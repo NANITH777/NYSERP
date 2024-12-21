@@ -18,8 +18,8 @@ namespace NYS_ERP.Repository
         public IWorkCenterRepository WorkCenter { get; private set; }
         public IOperationRepository Operation { get; private set; }
         public ICCRepository CostCenterAna { get; private set; }
-        //public IMaterialHeaderRepository MaterialHeader { get; private set; }
-        //public IMaterialTextRepository MaterialText { get; private set; }
+        public IMaterialRepository Material { get; private set; }
+        public IWCRepository WorkCenterAna { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -36,8 +36,8 @@ namespace NYS_ERP.Repository
             WorkCenter = new WorkCenterRepository(_db);
             Operation = new OperationRepository(_db);
             CostCenterAna = new CCRepository(_db);
-            //MaterialHeader = new MaterialHeaderRepository(_db);
-            //MaterialText = new MaterialTextRepository(_db);
+            Material = new MaterialRepository(_db);
+            WorkCenterAna = new WCRepository(_db);
         }
         public void Save()
         {

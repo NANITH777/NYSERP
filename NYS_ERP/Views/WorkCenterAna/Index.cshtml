@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WorkCenterAna>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Work Center Analysis List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="WorkCenterAna" asp-action="Upsert" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Work Center Analysis
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>WCM Doc Type</th>
+                <th>WCM Doc Number</th>
+                <th>From Date</th>
+                <th>Until Date</th>
+                <th>Language</th>
+                <th>Operation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.COMCODE</td>
+                    <td>@obj.WCMDOCTYPE</td>
+                    <td>@obj.WCMDOCNUM</td>
+                    <td>@obj.WCMDOCFROM.ToString("yyyy-MM-dd")</td>
+                    <td>@obj.WCMDOCUNTIL.ToString("yyyy-MM-dd")</td>
+                    <td>@obj.LANCODE</td>
+                    <td>@obj.OPRDOCTYPE</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="WorkCenterAna" asp-action="Upsert"
+                               asp-route-comCode="@obj.COMCODE"
+                               asp-route-wcmDocType="@obj.WCMDOCTYPE"
+                               asp-route-wcmDocNum="@obj.WCMDOCNUM"
+                               asp-route-wcmDocFrom="@obj.WCMDOCFROM"
+                               asp-route-wcmDocUntil="@obj.WCMDOCUNTIL"
+                               asp-route-lanCode="@obj.LANCODE"
+                               asp-route-oprDocType="@obj.OPRDOCTYPE"
+                               class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a onClick="Delete('@obj.COMCODE', '@obj.WCMDOCTYPE', '@obj.WCMDOCNUM',
+                                '@obj.WCMDOCFROM.ToString("yyyy-MM-dd")', '@obj.WCMDOCUNTIL.ToString("yyyy-MM-dd")',
+                                '@obj.LANCODE', '@obj.OPRDOCTYPE')"
+                               class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        function Delete(comCode, wcmDocType, wcmDocNum, wcmDocFrom, wcmDocUntil, lanCode, oprDocType) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/WorkCenterAna/Delete',
+                        type: 'POST',
+                        data: {
+                            comCode: comCode,
+                            wcmDocType: wcmDocType,
+                            wcmDocNum: wcmDocNum,
+                            wcmDocFrom: wcmDocFrom,
+                            wcmDocUntil: wcmDocUntil,
+                            lanCode: lanCode,
+                            oprDocType: oprDocType
+                        },
+                        success: function (data) {
+                            if (data.success) {
+                                toastr.success('Work Center Analysis deleted successfully');
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}
+

@@ -9,10 +9,10 @@ namespace NYS_ERP.Models
         [Key]
         [Required]
         [MaxLength(4)]
-        public string DOCTYPE { get; set; }
+        public string OPRDOCTYPE { get; set; }
 
         [MaxLength(80)]
-        public string DOCTYPETEXT { get; set; }
+        public string OPRDOCNUM { get; set; }
 
         public int? ISPASSIVE { get; set; }
 

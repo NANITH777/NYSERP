@@ -34,7 +34,7 @@ namespace NYS_ERP.Controllers
                 Operation = new Operation()
             };
 
-            operationVM.Operation.DOCTYPE = GenerateUniqueUnitCode();
+            operationVM.Operation.OPRDOCTYPE = GenerateUniqueUnitCode();
 
             return View(operationVM);
         }
@@ -46,7 +46,7 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var existingOperation = _unitOfWork.Operation.Get(u => u.DOCTYPE == operationVM.Operation.DOCTYPE);
+                    var existingOperation = _unitOfWork.Operation.Get(u => u.OPRDOCTYPE == operationVM.Operation.OPRDOCTYPE);
                     if (existingOperation != null)
                     {
                         ModelState.AddModelError("Operation.DOCTYPE", "An operation with this code already exists.");
@@ -59,9 +59,9 @@ namespace NYS_ERP.Controllers
                         return View(operationVM);
                     }
 
-                    if (string.IsNullOrEmpty(operationVM.Operation.DOCTYPE))
+                    if (string.IsNullOrEmpty(operationVM.Operation.OPRDOCTYPE))
                     {
-                        operationVM.Operation.DOCTYPE = GenerateUniqueUnitCode();
+                        operationVM.Operation.OPRDOCTYPE = GenerateUniqueUnitCode();
                     }
 
                     _unitOfWork.Operation.Add(operationVM.Operation);
@@ -103,7 +103,7 @@ namespace NYS_ERP.Controllers
                 })
             };
 
-            operationVM.Operation = _unitOfWork.Operation.Get(u => u.DOCTYPE == opCode);
+            operationVM.Operation = _unitOfWork.Operation.Get(u => u.OPRDOCTYPE == opCode);
             if (operationVM.Operation == null)
             {
                 return NotFound();
@@ -118,13 +118,13 @@ namespace NYS_ERP.Controllers
             {
                 try
                 {
-                    var operationFromDb = _unitOfWork.Operation.Get(u => u.DOCTYPE == operationVM.Operation.DOCTYPE);
+                    var operationFromDb = _unitOfWork.Operation.Get(u => u.OPRDOCTYPE == operationVM.Operation.OPRDOCTYPE);
                     if (operationFromDb == null)
                     {
                         return NotFound();
                     }
 
-                    operationFromDb.DOCTYPETEXT = operationVM.Operation.DOCTYPETEXT;
+                    operationFromDb.OPRDOCNUM = operationVM.Operation.OPRDOCNUM;
                     operationFromDb.ISPASSIVE = operationVM.Operation.ISPASSIVE;
 
                     _unitOfWork.Operation.Update(operationFromDb);
@@ -151,7 +151,7 @@ namespace NYS_ERP.Controllers
         private string GenerateUniqueUnitCode()
         {
             var lastOperation = _unitOfWork.Operation.GetAll()
-                .OrderByDescending(l => l.DOCTYPE)
+                .OrderByDescending(l => l.OPRDOCTYPE)
                 .FirstOrDefault();
 
             if (lastOperation == null)
@@ -159,7 +159,7 @@ namespace NYS_ERP.Controllers
                 return "OP01";
             }
 
-            string numericPart = lastOperation.DOCTYPE.Substring(2);
+            string numericPart = lastOperation.OPRDOCTYPE.Substring(2);
             int nextNumber = int.Parse(numericPart) + 1;
 
             return $"OP{nextNumber:D2}";
@@ -169,7 +169,7 @@ namespace NYS_ERP.Controllers
         {
             var operationVM = new OperationVM
             {
-                Operation = _unitOfWork.Operation.Get(u => u.DOCTYPE == opCode, includeProperties: "Company"),
+                Operation = _unitOfWork.Operation.Get(u => u.OPRDOCTYPE == opCode, includeProperties: "Company"),
                 CompanyList = _unitOfWork.Company.GetAll().Select(a => new SelectListItem
                 {
                     Text = a.COMTEXT,
@@ -188,7 +188,7 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(OperationVM operationVM)
         {
-            var opToDelete = _unitOfWork.Operation.Get(u => u.DOCTYPE == operationVM.Operation.DOCTYPE);
+            var opToDelete = _unitOfWork.Operation.Get(u => u.OPRDOCTYPE == operationVM.Operation.OPRDOCTYPE);
 
             if (opToDelete == null)
             {
@@ -212,8 +212,8 @@ namespace NYS_ERP.Controllers
 
             var formattedData = objMTList.Select(u => new
             {
-                opCode = u.DOCTYPE,  
-                opText = u.DOCTYPETEXT,
+                opCode = u.OPRDOCTYPE,  
+                opText = u.OPRDOCNUM,
                 isPassive = u.ISPASSIVE,
                 companyText = u.Company.COMCODE  
             }).ToList();

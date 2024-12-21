@@ -1,210 +1,168 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using NYS_ERP.Models;
 using NYS_ERP.Models.ViewModels;
 using NYS_ERP.Repository.IRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace NYS_ERP.Controllers
 {
     public class CostCenterAnaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger<CostCenterAnaController> _logger;
 
-        public CostCenterAnaController(IUnitOfWork unitOfWork, ILogger<CostCenterAnaController> logger)
+        public CostCenterAnaController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            var costCenterList = _unitOfWork.CostCenterAna.GetAll(includeProperties: "Company,CostCenter,Language").ToList();
-            return View(costCenterList);
+            var costCenterAnaList = _unitOfWork.CostCenterAna.GetAll(includeProperties: "Company,CostCenter,Language");
+            return View(costCenterAnaList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(string comCode, string ccmDocType, string ccmDocNum, DateTime ccmDocFrom, DateTime ccmDocUntil, string lanCode)
         {
-            var costCenterAnaVM = new CostCenterAnaVM
+            CostCenterAnaVM costCenterAnaVM = new()
             {
                 CompanyList = _unitOfWork.Company.GetAll().Select(c => new SelectListItem
                 {
-                    Text = c.COMTEXT,
+                    Text = c.COMCODE,
                     Value = c.COMCODE
                 }),
                 CostCenterList = _unitOfWork.CostCenter.GetAll().Select(cc => new SelectListItem
                 {
-                    Text = cc.CCMDOCNUM,
+                    Text = cc.CCMDOCTYPE,
                     Value = cc.CCMDOCTYPE
                 }),
                 LanguageList = _unitOfWork.Language.GetAll().Select(l => new SelectListItem
                 {
-                    Text = l.LANTEXT,
+                    Text = l.LANCODE,
                     Value = l.LANCODE
                 }),
                 CostCenterAna = new CostCenterAna()
             };
 
+            if (!string.IsNullOrEmpty(comCode) && !string.IsNullOrEmpty(ccmDocType) &&
+                !string.IsNullOrEmpty(ccmDocNum) && !string.IsNullOrEmpty(lanCode))
+            {
+                costCenterAnaVM.CostCenterAna = _unitOfWork.CostCenterAna.Get(c =>
+                    c.COMCODE == comCode &&
+                    c.CCMDOCTYPE == ccmDocType &&
+                    c.CCMDOCNUM == ccmDocNum &&
+                    c.CCMDOCFROM == ccmDocFrom &&
+                    c.CCMDOCUNTIL == ccmDocUntil &&
+                    c.LANCODE == lanCode);
+
+                if (costCenterAnaVM.CostCenterAna == null)
+                {
+                    return NotFound();
+                }
+            }
+
             return View(costCenterAnaVM);
         }
 
+
         [HttpPost]
-        public IActionResult Create(CostCenterAnaVM costCenterAnaVM)
+        [ValidateAntiForgeryToken]
+        public IActionResult Upsert(CostCenterAnaVM costCenterAnaVM)
         {
             if (ModelState.IsValid)
             {
-                try
+                var existing = _unitOfWork.CostCenterAna.Get(c =>
+                    c.COMCODE == costCenterAnaVM.CostCenterAna.COMCODE &&
+                    c.CCMDOCTYPE == costCenterAnaVM.CostCenterAna.CCMDOCTYPE &&
+                    c.CCMDOCNUM == costCenterAnaVM.CostCenterAna.CCMDOCNUM &&
+                    c.CCMDOCFROM == costCenterAnaVM.CostCenterAna.CCMDOCFROM &&
+                    c.CCMDOCUNTIL == costCenterAnaVM.CostCenterAna.CCMDOCUNTIL &&
+                    c.LANCODE == costCenterAnaVM.CostCenterAna.LANCODE);
+
+                if (existing != null)
+                {
+                    // Copier toutes les propriétés non-clés
+                    existing.MAINCCMDOCTYPE = costCenterAnaVM.CostCenterAna.MAINCCMDOCTYPE;
+                    existing.MAINCCMDOCNUM = costCenterAnaVM.CostCenterAna.MAINCCMDOCNUM;
+                    existing.ISDELETED = costCenterAnaVM.CostCenterAna.ISDELETED;
+                    existing.ISPASSIVE = costCenterAnaVM.CostCenterAna.ISPASSIVE;
+                    existing.CCMSTEXT = costCenterAnaVM.CostCenterAna.CCMSTEXT;
+                    existing.CCMLTEXT = costCenterAnaVM.CostCenterAna.CCMLTEXT;
+
+                    _unitOfWork.CostCenterAna.Update(existing);
+                    TempData["success"] = "Cost Center Analysis updated successfully";
+                }
+                else
                 {
                     _unitOfWork.CostCenterAna.Add(costCenterAnaVM.CostCenterAna);
-                    _unitOfWork.Save();
+                    TempData["success"] = "Cost Center Analysis created successfully";
+                }
 
-                    TempData["success"] = "Cost Center Ana created successfully!";
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Error creating Cost Center Ana");
-                    ModelState.AddModelError(string.Empty, "An error occurred while creating the Cost Center Ana.");
-                }
+                _unitOfWork.Save();
+                return RedirectToAction(nameof(Index));
             }
 
-            // Repopulate dropdowns
             costCenterAnaVM.CompanyList = _unitOfWork.Company.GetAll().Select(c => new SelectListItem
             {
-                Text = c.COMTEXT,
+                Text = c.COMCODE,
                 Value = c.COMCODE
             });
             costCenterAnaVM.CostCenterList = _unitOfWork.CostCenter.GetAll().Select(cc => new SelectListItem
             {
-                Text = cc.CCMDOCNUM,
+                Text = cc.CCMDOCTYPE,
                 Value = cc.CCMDOCTYPE
             });
             costCenterAnaVM.LanguageList = _unitOfWork.Language.GetAll().Select(l => new SelectListItem
             {
-                Text = l.LANTEXT,
+                Text = l.LANCODE,
                 Value = l.LANCODE
             });
 
             return View(costCenterAnaVM);
         }
 
-        public IActionResult Edit(string comCode, string ccmDocType, string ccmDocNum)
-        {
-            if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(ccmDocType) || string.IsNullOrEmpty(ccmDocNum))
-            {
-                return NotFound();
-            }
-
-            var costCenterAna = _unitOfWork.CostCenterAna.Get(u =>
-                u.COMCODE == comCode &&
-                u.CCMDOCTYPE == ccmDocType &&
-                u.CCMDOCNUM == ccmDocNum);
-
-            if (costCenterAna == null)
-            {
-                return NotFound();
-            }
-
-            var costCenterAnaVM = new CostCenterAnaVM
-            {
-                CostCenterAna = costCenterAna,
-                CompanyList = _unitOfWork.Company.GetAll().Select(c => new SelectListItem
-                {
-                    Text = c.COMTEXT,
-                    Value = c.COMCODE
-                }),
-                CostCenterList = _unitOfWork.CostCenter.GetAll().Select(cc => new SelectListItem
-                {
-                    Text = cc.CCMDOCNUM,
-                    Value = cc.CCMDOCTYPE
-                }),
-                LanguageList = _unitOfWork.Language.GetAll().Select(l => new SelectListItem
-                {
-                    Text = l.LANTEXT,
-                    Value = l.LANCODE
-                })
-            };
-
-            return View(costCenterAnaVM);
-        }
 
         [HttpPost]
-        public IActionResult Edit(CostCenterAnaVM costCenterAnaVM)
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(string comCode, string ccmDocType, string ccmDocNum,
+     DateTime ccmDocFrom, DateTime ccmDocUntil, string lanCode)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                // Validation des paramètres
+                if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(ccmDocType) ||
+                    string.IsNullOrEmpty(ccmDocNum) || string.IsNullOrEmpty(lanCode))
                 {
-                    _unitOfWork.CostCenterAna.Update(costCenterAnaVM.CostCenterAna);
-                    _unitOfWork.Save();
-
-                    TempData["success"] = "Cost Center updated successfully!";
-                    return RedirectToAction("Index");
+                    return Json(new { success = false, message = "Paramètres invalides pour la suppression." });
                 }
-                catch (Exception ex)
+
+                // Normaliser les dates pour ne garder que la partie Date sans l'heure
+                ccmDocFrom = ccmDocFrom.Date;
+                ccmDocUntil = ccmDocUntil.Date;
+
+                var costCenterAna = _unitOfWork.CostCenterAna.Get(c =>
+                    c.COMCODE == comCode &&
+                    c.CCMDOCTYPE == ccmDocType &&
+                    c.CCMDOCNUM == ccmDocNum &&
+                    c.CCMDOCFROM.Date == ccmDocFrom &&
+                    c.CCMDOCUNTIL.Date == ccmDocUntil &&
+                    c.LANCODE == lanCode);
+
+                if (costCenterAna == null)
                 {
-                    _logger.LogError(ex, "Error updating Cost Center ");
-                    ModelState.AddModelError(string.Empty, "An error occurred while updating the Cost Center.");
+                    return Json(new { success = false, message = "Enregistrement non trouvé." });
                 }
+
+                // Supprimer l'enregistrement
+                _unitOfWork.CostCenterAna.Remove(costCenterAna);
+                _unitOfWork.Save();
+
+                return Json(new { success = true, message = "Suppression réussie." });
             }
-
-            // Repopulate dropdowns
-            costCenterAnaVM.CompanyList = _unitOfWork.Company.GetAll().Select(c => new SelectListItem
+            catch (Exception ex)
             {
-                Text = c.COMTEXT,
-                Value = c.COMCODE
-            });
-            costCenterAnaVM.CostCenterList = _unitOfWork.CostCenter.GetAll().Select(cc => new SelectListItem
-            {
-                Text = cc.CCMDOCNUM,
-                Value = cc.CCMDOCTYPE
-            });
-            costCenterAnaVM.LanguageList = _unitOfWork.Language.GetAll().Select(l => new SelectListItem
-            {
-                Text = l.LANTEXT,
-                Value = l.LANCODE
-            });
-
-            return View(costCenterAnaVM);
+                return Json(new { success = false, message = $"Erreur: {ex.Message}" });
+            }
         }
 
-        public IActionResult Delete(string comCode, string ccmDocType, string ccmDocNum)
-        {
-            var costCenterAna = _unitOfWork.CostCenterAna.Get(u =>
-                u.COMCODE == comCode &&
-                u.CCMDOCTYPE == ccmDocType &&
-                u.CCMDOCNUM == ccmDocNum);
-
-            if (costCenterAna == null)
-            {
-                return NotFound();
-            }
-
-            return View(costCenterAna);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(string comCode, string ccmDocType, string ccmDocNum)
-        {
-            var costCenterAna = _unitOfWork.CostCenterAna.Get(u =>
-                u.COMCODE == comCode &&
-                u.CCMDOCTYPE == ccmDocType &&
-                u.CCMDOCNUM == ccmDocNum);
-
-            if (costCenterAna == null)
-            {
-                return NotFound();
-            }
-
-            _unitOfWork.CostCenterAna.Remove(costCenterAna);
-            _unitOfWork.Save();
-
-            TempData["success"] = "Cost Center deleted successfully!";
-            return RedirectToAction("Index");
-        }
     }
 }

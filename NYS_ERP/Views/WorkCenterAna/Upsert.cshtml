@@ -1,0 +1,69 @@
+﻿@model WorkCenterAna
+
+<form method="post" asp-action="Upsert">
+    <div class="row pb-2">
+        <h2 class="text-primary">@(Model.WCMDOCNUM == null ? "Create" : "Update") Work Center Analysis</h2>
+        <hr />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="COMCODE"></label>
+        <select asp-for="COMCODE" asp-items="ViewBag.CompanyList" class="form-select">
+            <option disabled selected>--Select Company--</option>
+        </select>
+        <span asp-validation-for="COMCODE" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="WCMDOCTYPE"></label>
+        <select asp-for="WCMDOCTYPE" asp-items="ViewBag.WorkCenterList" class="form-select">
+            <option disabled selected>--Select Work Center Type--</option>
+        </select>
+        <span asp-validation-for="WCMDOCTYPE" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="WCMDOCNUM"></label>
+        <input asp-for="WCMDOCNUM" class="form-control" />
+        <span asp-validation-for="WCMDOCNUM" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="WCMDOCFROM"></label>
+        <input asp-for="WCMDOCFROM" class="form-control" type="date" />
+        <span asp-validation-for="WCMDOCFROM" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="WCMDOCUNTIL"></label>
+        <input asp-for="WCMDOCUNTIL" class="form-control" type="date" />
+        <span asp-validation-for="WCMDOCUNTIL" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LANCODE"></label>
+        <select asp-for="LANCODE" asp-items="ViewBag.LanguageList" class="form-select">
+            <option disabled selected>--Select Language--</option>
+        </select>
+        <span asp-validation-for="LANCODE" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="WORKTIME"></label>
+        <input asp-for="WORKTIME" class="form-control" />
+        <span asp-validation-for="WORKTIME" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:150px">
+        @(Model.WCMDOCNUM == null ? "Create" : "Update")
+    </button>
+    <a asp-controller="WorkCenterAna" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        Back to List
+    </a>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ejh1CVRRigAfTD5tQpn6/mVpZrXYZPvQU96ddMrtjz8=",
+  "Hash": "WD5kBKqcf3XzBB4/3LSg78YEsWpk9WU2wTphA43zXU0=",
   "Source": "NYS_ERP",
   "BasePath": "_content/NYS_ERP",
   "Mode": "Default",
@@ -357,6 +357,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\wocenter.js"
+    },
+    {
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\workCenterAna.js",
+      "SourceId": "NYS_ERP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
+      "BasePath": "_content/NYS_ERP",
+      "RelativePath": "js/workCenterAna.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\workCenterAna.js"
     },
     {
       "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

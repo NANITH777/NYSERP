@@ -2,13 +2,8 @@
 
 namespace NYS_ERP.Repository.IRepository
 {
-    //public interface IMaterialHeaderRepository : IRepository<MaterialHeader>
-    //{
-    //    void Update(MaterialHeader obj);
-    //}
-
-    //public interface IMaterialTextRepository : IRepository<MaterialText>
-    //{
-    //    void Update(MaterialText obj);
-    //}
+    public interface IMaterialRepository : IRepository<Material>
+    {
+        void Update(Material obj);
+    }
 }

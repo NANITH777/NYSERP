@@ -1,0 +1,218 @@
+﻿@model CostCenterAnaVM
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row align-items-center">
+            <div class="col-1">
+                <a asp-controller="CostCenterAna" asp-action="Index" class="btn btn-outline-light btn-lg rounded-circle shadow-sm">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-10 text-center">
+                <h2 class="text-white py-2">@(Model.CostCenterAna.CCMDOCNUM == null ? "Create" : "Update") Cost Center Analysis</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form asp-action="Upsert" method="post" class="row" enctype="multipart/form-data">
+            <div class="row">
+                <!-- Primary Key Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Primary Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="CostCenterAna.COMCODE" asp-items="Model.CompanyList" class="form-select border-0 shadow">
+                                            <option disabled selected>-- Select Company --</option>
+                                        </select>
+                                        <label asp-for="CostCenterAna.COMCODE" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.COMCODE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="CostCenterAna.CCMDOCTYPE" asp-items="Model.CostCenterList" class="form-select border-0 shadow">
+                                            <option disabled selected>-- Select Cost Center Type --</option>
+                                        </select>
+                                        <label asp-for="CostCenterAna.CCMDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.CCMDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="CostCenterAna.CCMDOCNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="CostCenterAna.CCMDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.CCMDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="CostCenterAna.LANCODE" asp-items="Model.LanguageList" class="form-select border-0 shadow">
+                                            <option disabled selected>-- Select Language --</option>
+                                        </select>
+                                        <label asp-for="CostCenterAna.LANCODE" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.LANCODE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date Range Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-info">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">Date Range</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="CostCenterAna.CCMDOCFROM" type="date" class="form-control border-0 shadow" />
+                                        <label asp-for="CostCenterAna.CCMDOCFROM" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.CCMDOCFROM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="CostCenterAna.CCMDOCUNTIL" type="date" class="form-control border-0 shadow" />
+                                        <label asp-for="CostCenterAna.CCMDOCUNTIL" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.CCMDOCUNTIL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-success">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Additional Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="CostCenterAna.MAINCCMDOCTYPE" class="form-control border-0 shadow" />
+                                        <label asp-for="CostCenterAna.MAINCCMDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.MAINCCMDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="CostCenterAna.MAINCCMDOCNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="CostCenterAna.MAINCCMDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="CostCenterAna.MAINCCMDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-warning">
+                        <div class="card-header bg-warning text-white">
+                            <h5 class="mb-0">Description</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea asp-for="CostCenterAna.CCMSTEXT" class="form-control border-0 shadow" style="height: 150px;"></textarea>
+                                        <label asp-for="CostCenterAna.CCMSTEXT" class="ms-2">Short Description</label>
+                                        <span asp-validation-for="CostCenterAna.CCMSTEXT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea asp-for="CostCenterAna.CCMLTEXT" class="form-control border-0 shadow" style="height: 150px;"></textarea>
+                                        <label asp-for="CostCenterAna.CCMLTEXT" class="ms-2">Long Description</label>
+                                        <span asp-validation-for="CostCenterAna.CCMLTEXT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-secondary">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="CostCenterAna.ISDELETED" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="CostCenterAna.ISDELETED">Is Deleted</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="CostCenterAna.ISPASSIVE" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="CostCenterAna.ISPASSIVE">Is Passive</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <button type="submit" class="btn btn-primary form-control">
+                                @(Model.CostCenterAna.CCMDOCNUM == null ? "Create" : "Update")
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a asp-controller="CostCenterAna" asp-action="Index" class="btn btn-secondary border form-control">
+                                Back to List
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        $(document).ready(function() {
+            $('#CostCenterAna_CCMDOCFROM, #CostCenterAna_CCMDOCUNTIL').change(function() {
+                var fromDate = new Date($('#CostCenterAna_CCMDOCFROM').val());
+                var untilDate = new Date($('#CostCenterAna_CCMDOCUNTIL').val());
+
+                if (fromDate > untilDate) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Invalid Date',
+                        text: 'The start date must be before or equal to the end date.',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        $(this).val(''); 
+                    });
+                }
+
+
+            });
+        });
+    </script>
+}

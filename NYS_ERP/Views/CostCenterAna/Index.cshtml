@@ -1,5 +1,7 @@
 ﻿@model List<CostCenterAna>
-
+@{
+    var antiforgeryToken = @Html.AntiForgeryToken();
+}
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row align-items-center">
@@ -9,76 +11,429 @@
                 </a>
             </div>
             <div class="col-10 text-center">
-                <h2 class="text-white py-2">Cost Center Ana List</h2>
+                <h2 class="text-white py-2">Cost Center Analysis</h2>
             </div>
             <div class="col-1"></div>
         </div>
     </div>
-</div>
 
-<div class="card-body p-4">
-    <div class="row pb-3">
-        <div class="col-6">
-        </div>
-        <div class="col-6 text-end">
-            <a asp-controller="CostCenterAna" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Create New Cost Center Ana
-            </a>
+    <!--Details-->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" id="detailsModalLabel">Cost Center Analysis Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <!-- Primary Information -->
+                        <div class="col-12">
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    Primary Information
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Company Code:</strong> <span id="detail-comcode"></span></p>
+                                            <p><strong>Document Type:</strong> <span id="detail-doctype"></span></p>
+                                            <p><strong>Document Number:</strong> <span id="detail-docnum"></span></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Valid From:</strong> <span id="detail-docfrom"></span></p>
+                                            <p><strong>Valid Until:</strong> <span id="detail-docuntil"></span></p>
+                                            <p><strong>Language Code:</strong> <span id="detail-lancode"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="col-12">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    Additional Information
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Main Document Type:</strong> <span id="detail-maindoctype"></span></p>
+                                            <p><strong>Main Document Number:</strong> <span id="detail-maindocnum"></span></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Status:</strong> <span id="detail-status"></span></p>
+                                            <p><strong>Is Deleted:</strong> <span id="detail-isdeleted"></span></p>
+                                            <p><strong>Is Passive:</strong> <span id="detail-ispassive"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="col-12">
+                            <div class="card border-warning">
+                                <div class="card-header bg-warning text-white">
+                                    Description
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <label class="form-label"><strong>Short Description:</strong></label>
+                                            <div class="border rounded p-2 bg-light" id="detail-shorttext"></div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label"><strong>Long Description:</strong></label>
+                                            <div class="border rounded p-2 bg-light" id="detail-longtext"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <table id="tblData" class="table table-bordered table-striped">
-        <thead class="text-center">
-            <tr>
-                <th>Company Code</th>
-                <th>Document Type</th>
-                <th>Document Number</th>
-                <th>Document From</th>
-                <th>Document Until</th>
-                <th>Language Code</th>
-                <th>Is Deleted</th>
-                <th>Is Passive</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.COMCODE</td>
-                    <td>@item.CCMDOCTYPE</td>
-                    <td>@item.CCMDOCNUM</td>
-                    <td>@item.CCMDOCFROM.ToString("yyyy-MM-dd")</td>
-                    <td>@item.CCMDOCUNTIL.ToString("yyyy-MM-dd")</td>
-                    <td>@item.LANCODE</td>
-                    <td>@item.ISDELETED</td>
-                    <td>@item.ISPASSIVE</td>
-                    <td class="text-center">
-                        <a asp-controller="CostCenterAna" asp-action="Edit" asp-route-id="@item.CCMDOCNUM" class="btn btn-sm btn-primary">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </a>
-                        <a asp-controller="CostCenterAna" asp-action="Delete" asp-route-id="@item.CCMDOCNUM" class="btn btn-sm btn-danger">
-                            <i class="bi bi-trash-fill"></i> Delete
-                        </a>
-                    </td>
+
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="CostCenterAna" asp-action="Upsert" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Create New Analysis
+                </a>
+            </div>
+        </div>
+
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr class="bg-light">
+                    <th>Company</th>
+                    <th>Type</th>
+                    <th>Number</th>
+                    <th>Valid From</th>
+                    <th>Valid Until</th>
+                    <th>Language</th>
+                    <th>Status</th>
+                    <th class="text-center">Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="badge bg-primary">@item.COMCODE</span>
+                        </td>
+                        <td>@item.CCMDOCTYPE</td>
+                        <td>@item.CCMDOCNUM</td>
+                        <td>@item.CCMDOCFROM.ToString("dd MMM yyyy")</td>
+                        <td>@item.CCMDOCUNTIL.ToString("dd MMM yyyy")</td>
+                        <td>
+                            <span class="badge bg-info">@item.LANCODE</span>
+                        </td>
+                        <td>
+                            @if (item.ISDELETED)
+                            {
+                                <span class="badge bg-danger">Deleted</span>
+                            }
+                            else if (item.ISPASSIVE)
+                            {
+                                <span class="badge bg-warning">Passive</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <button type="button"
+                                        onclick="showDetails('@Html.Raw(Json.Serialize(item.COMCODE))',
+                                   '@Html.Raw(Json.Serialize(item.CCMDOCTYPE))',
+                                   '@Html.Raw(Json.Serialize(item.CCMDOCNUM))',
+                                   '@item.CCMDOCFROM.ToString("yyyy-MM-dd")',
+                                   '@item.CCMDOCUNTIL.ToString("yyyy-MM-dd")',
+                                   '@Html.Raw(Json.Serialize(item.LANCODE))',
+                                   '@Html.Raw(Json.Serialize(item.MAINCCMDOCTYPE))',
+                                   '@Html.Raw(Json.Serialize(item.MAINCCMDOCNUM))',
+                                   @item.ISDELETED.ToString().ToLower(),
+                                   @item.ISPASSIVE.ToString().ToLower(),
+                                   '@Html.Raw(Json.Serialize(item.CCMSTEXT))',
+                                   '@Html.Raw(Json.Serialize(item.CCMLTEXT))')"
+                                        class="btn btn-sm btn-info">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <a asp-controller="CostCenterAna"
+                                   asp-action="Upsert"
+                                   asp-route-comCode="@item.COMCODE"
+                                   asp-route-ccmDocType="@item.CCMDOCTYPE"
+                                   asp-route-ccmDocNum="@item.CCMDOCNUM"
+                                   asp-route-ccmDocFrom="@item.CCMDOCFROM.ToString("yyyy-MM-dd")"
+                                   asp-route-ccmDocUntil="@item.CCMDOCUNTIL.ToString("yyyy-MM-dd")"
+                                   asp-route-lanCode="@item.LANCODE"
+                                   class="btn btn-sm btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <button onclick="Delete('@item.COMCODE', '@item.CCMDOCTYPE', '@item.CCMDOCNUM',
+    '@item.CCMDOCFROM.ToString("yyyy-MM-dd")',
+    '@item.CCMDOCUNTIL.ToString("yyyy-MM-dd")',
+    '@item.LANCODE')"
+                                        class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @section Scripts {
     <script>
-        $(document).ready(function () {
-            $('#tblData').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'excel', 'pdf', 'print'
-                ],
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/en.json"
+        // Déclaration des variables globales
+        let detailsModal;
+        let dataTable;
+
+        window.Delete = function (comCode, ccmDocType, ccmDocNum, ccmDocFrom, ccmDocUntil, lanCode) {
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Cette action est irréversible!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Oui, supprimer!',
+                cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    try {
+                        // Create the request payload
+                        const payload = {
+                            comCode: comCode,
+                            ccmDocType: ccmDocType,
+                            ccmDocNum: ccmDocNum,
+                            ccmDocFrom: new Date(ccmDocFrom).toISOString(),
+                            ccmDocUntil: new Date(ccmDocUntil).toISOString(),
+                            lanCode: lanCode,
+                            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                        };
+
+                        // Show loading state
+                        Swal.fire({
+                            title: 'Suppression en cours...',
+                            text: 'Veuillez patienter',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            showConfirmButton: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        // Make the delete request
+                        $.ajax({
+                            url: '/CostCenterAna/Delete',
+                            type: 'POST',
+                            data: payload,
+                            success: function (response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        title: 'Succès!',
+                                        text: response.message,
+                                        icon: 'success'
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Erreur',
+                                        text: response.message || 'Une erreur est survenue lors de la suppression',
+                                        icon: 'error'
+                                    });
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Delete Error:', {
+                                    status: status,
+                                    error: error,
+                                    response: xhr.responseText
+                                });
+
+                                Swal.fire({
+                                    title: 'Erreur',
+                                    text: 'Une erreur est survenue lors de la suppression. Veuillez réessayer.',
+                                    icon: 'error'
+                                });
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Delete Function Error:', error);
+                        Swal.fire({
+                            title: 'Erreur',
+                            text: 'Une erreur inattendue est survenue. Veuillez réessayer.',
+                            icon: 'error'
+                        });
+                    }
                 }
             });
+        };
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+
+            // Show loading state
+            Swal.fire({
+                title: 'Mise à jour en cours...',
+                text: 'Veuillez patienter',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Get form data
+            const formData = new FormData(form);
+
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: 'Succès!',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(() => {
+                            window.location.href = '/CostCenterAna/Index';
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Erreur',
+                            text: response.message || 'Une erreur est survenue lors de la mise à jour',
+                            icon: 'error'
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Update Error:', {
+                        status: status,
+                        error: error,
+                        response: xhr.responseText
+                    });
+
+                    Swal.fire({
+                        title: 'Erreur',
+                        text: 'Une erreur est survenue lors de la mise à jour. Veuillez réessayer.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+
+        // Initialisation lors du chargement de la page
+        $(document).ready(function () {
+            // Initialisation de la modal
+            detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'), {
+                keyboard: false
+            });
+
+            // Initialisation de DataTable
+            if (!$.fn.DataTable.isDataTable('#tblData')) {
+                dataTable = $('#tblData').DataTable({
+                    buttons: [
+                        {
+                            extend: 'copy',
+                            className: 'btn btn-secondary btn-sm',
+                            text: '<i class="bi bi-clipboard"></i> Copy'
+                        },
+                        {
+                            extend: 'excel',
+                            className: 'btn btn-secondary btn-sm',
+                            text: '<i class="bi bi-file-earmark-excel"></i> Excel'
+                        },
+                        {
+                            extend: 'pdf',
+                            className: 'btn btn-secondary btn-sm',
+                            text: '<i class="bi bi-file-earmark-pdf"></i> PDF'
+                        },
+                        {
+                            extend: 'print',
+                            className: 'btn btn-secondary btn-sm',
+                            text: '<i class="bi bi-printer"></i> Print'
+                        }
+                    ],
+                    
+                    language: {
+                        url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/fr.json"
+                    },
+                    pageLength: 10,
+                    responsive: true
+                });
+            } else {
+                dataTable = $('#tblData').DataTable();
+            }
+            $('form').on('submit', handleFormSubmit);
         });
+
+        // Rendre la fonction showDetails globalement accessible aussi
+        window.showDetails = function (comCode, docType, docNum, docFrom, docUntil, lanCode,
+            mainDocType, mainDocNum, isDeleted, isPassive, shortText, longText) {
+            try {
+                // Décodage des textes
+                shortText = shortText ? decodeURIComponent(shortText.replace(/\+/g, ' ')) : 'N/A';
+                longText = longText ? decodeURIComponent(longText.replace(/\+/g, ' ')) : 'N/A';
+
+                // Mise à jour des champs de la modal
+                $('#detail-comcode').text(comCode || 'N/A');
+                $('#detail-doctype').text(docType || 'N/A');
+                $('#detail-docnum').text(docNum || 'N/A');
+                $('#detail-docfrom').text(new Date(docFrom).toLocaleDateString());
+                $('#detail-docuntil').text(new Date(docUntil).toLocaleDateString());
+                $('#detail-lancode').text(lanCode || 'N/A');
+                $('#detail-maindoctype').text(mainDocType || 'N/A');
+                $('#detail-maindocnum').text(mainDocNum || 'N/A');
+
+                // Gestion des statuts
+                let statusHtml = '';
+                if (isDeleted === 'true') {
+                    statusHtml = '<span class="badge bg-danger">Deleted</span>';
+                } else if (isPassive === 'true') {
+                    statusHtml = '<span class="badge bg-warning">Passive</span>';
+                } else {
+                    statusHtml = '<span class="badge bg-success">Active</span>';
+                }
+                $('#detail-status').html(statusHtml);
+
+                $('#detail-isdeleted').html(isDeleted === 'true' ?
+                    '<i class="bi bi-check-circle text-danger"></i> Yes' :
+                    '<i class="bi bi-x-circle text-success"></i> No');
+                $('#detail-ispassive').html(isPassive === 'true' ?
+                    '<i class="bi bi-check-circle text-warning"></i> Yes' :
+                    '<i class="bi bi-x-circle text-success"></i> No');
+
+                $('#detail-shorttext').text(shortText);
+                $('#detail-longtext').text(longText);
+
+                detailsModal.show();
+            } catch (error) {
+                console.error('Error in showDetails:', error);
+                toastr.error('Error showing details');
+            }
+        };
     </script>
 }

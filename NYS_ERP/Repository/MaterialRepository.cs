@@ -3,33 +3,18 @@ using NYS_ERP.Repository.IRepository;
 
 namespace NYS_ERP.Repository
 {
-    //public class MaterialHeaderRepository : Repository<MaterialHeader>, IMaterialHeaderRepository
-    //{
-    //    private ApplicationDbContext _db;
+    public class MaterialRepository : Repository<Material>, IMaterialRepository
+    {
+        private ApplicationDbContext _db;
 
-    //    public MaterialHeaderRepository(ApplicationDbContext db) : base(db)
-    //    {
-    //        _db = db;
-    //    }
+        public MaterialRepository(ApplicationDbContext db) : base(db)
+        {
+            _db = db;
+        }
 
-    //    public void Update(MaterialHeader obj)
-    //    {
-    //        _db.MaterialHeaders.Update(obj);
-    //    }
-    //}
-
-    //public class MaterialTextRepository : Repository<MaterialText>, IMaterialTextRepository
-    //{
-    //    private ApplicationDbContext _db;
-
-    //    public MaterialTextRepository(ApplicationDbContext db) : base(db)
-    //    {
-    //        _db = db;
-    //    }
-
-    //    public void Update(MaterialText obj)
-    //    {
-    //        _db.MaterialTexts.Update(obj);
-    //    }
-    //}
+        public void Update(Material obj)
+        {
+            _db.Materials.Update(obj);
+        }
+    }
 }

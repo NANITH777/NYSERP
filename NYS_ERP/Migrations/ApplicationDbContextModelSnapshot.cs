@@ -353,6 +353,107 @@ namespace NYS_ERP.Migrations
                         });
                 });
 
+            modelBuilder.Entity("NYS_ERP.Models.Material", b =>
+                {
+                    b.Property<string>("COMCODE")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("MATDOCTYPE")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("MATDOCNUM")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("MATDOCFROM")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MATDOCUNTIL")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LANCODE")
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("BOMDOCNUM")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BOMDOCTYPE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal>("BRUTWEIGHT")
+                        .HasColumnType("decimal(12,3)");
+
+                    b.Property<string>("BWUNIT")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<int>("ISBOM")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ISDELETED")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ISPASSIVE")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ISROUTE")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MATLTEXT")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("MATSTEXT")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("NETWEIGHT")
+                        .HasColumnType("decimal(12,3)");
+
+                    b.Property<string>("NWUNIT")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("ROTDOCNUM")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ROTDOCTYPE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("STUNIT")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<int>("SUPPLYTYPE")
+                        .HasColumnType("int");
+
+                    b.HasKey("COMCODE", "MATDOCTYPE", "MATDOCNUM", "MATDOCFROM", "MATDOCUNTIL", "LANCODE");
+
+                    b.HasIndex("BOMDOCTYPE");
+
+                    b.HasIndex("LANCODE");
+
+                    b.HasIndex("MATDOCTYPE");
+
+                    b.HasIndex("ROTDOCTYPE");
+
+                    b.ToTable("Materials");
+                });
+
             modelBuilder.Entity("NYS_ERP.Models.MaterialType", b =>
                 {
                     b.Property<string>("MATDOCTYPE")
@@ -387,7 +488,7 @@ namespace NYS_ERP.Migrations
 
             modelBuilder.Entity("NYS_ERP.Models.Operation", b =>
                 {
-                    b.Property<string>("DOCTYPE")
+                    b.Property<string>("OPRDOCTYPE")
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
@@ -395,13 +496,13 @@ namespace NYS_ERP.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(4)");
 
-                    b.Property<string>("DOCTYPETEXT")
+                    b.Property<int?>("ISPASSIVE")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OPRDOCNUM")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
-
-                    b.Property<int?>("ISPASSIVE")
-                        .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -409,7 +510,7 @@ namespace NYS_ERP.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.HasKey("DOCTYPE");
+                    b.HasKey("OPRDOCTYPE");
 
                     b.HasIndex("COMCODE");
 
@@ -517,6 +618,89 @@ namespace NYS_ERP.Migrations
                     b.ToTable("WorkCenters");
                 });
 
+            modelBuilder.Entity("NYS_ERP.Models.WorkCenterAna", b =>
+                {
+                    b.Property<string>("COMCODE")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("WCMDOCTYPE")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("WCMDOCNUM")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<DateTime>("WCMDOCFROM")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("WCMDOCUNTIL")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LANCODE")
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("OPRDOCTYPE")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("CCMDOCNUM")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CCMDOCTYPE")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("ISDELETED")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ISPASSIVE")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MAINWCMDOCNUM")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("MAINWCMDOCTYPE")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("WCMLTEXT")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("WCMSTEXT")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("WORKTIME")
+                        .HasPrecision(3, 2)
+                        .HasColumnType("decimal(3,2)");
+
+                    b.HasKey("COMCODE", "WCMDOCTYPE", "WCMDOCNUM", "WCMDOCFROM", "WCMDOCUNTIL", "LANCODE", "OPRDOCTYPE");
+
+                    b.HasIndex("CCMDOCTYPE");
+
+                    b.HasIndex("LANCODE");
+
+                    b.HasIndex("OPRDOCTYPE");
+
+                    b.HasIndex("WCMDOCTYPE");
+
+                    b.ToTable("WorkCenterAnas");
+                });
+
             modelBuilder.Entity("NYS_ERP.Models.BOM", b =>
                 {
                     b.HasOne("NYS_ERP.Models.Company", "Company")
@@ -607,6 +791,49 @@ namespace NYS_ERP.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("NYS_ERP.Models.Material", b =>
+                {
+                    b.HasOne("NYS_ERP.Models.BOM", "BOM")
+                        .WithMany()
+                        .HasForeignKey("BOMDOCTYPE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("COMCODE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LANCODE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.MaterialType", "MaterialType")
+                        .WithMany()
+                        .HasForeignKey("MATDOCTYPE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.Rota", "Rota")
+                        .WithMany()
+                        .HasForeignKey("ROTDOCTYPE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("BOM");
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Language");
+
+                    b.Navigation("MaterialType");
+
+                    b.Navigation("Rota");
+                });
+
             modelBuilder.Entity("NYS_ERP.Models.MaterialType", b =>
                 {
                     b.HasOne("NYS_ERP.Models.Company", "Company")
@@ -660,6 +887,49 @@ namespace NYS_ERP.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("NYS_ERP.Models.WorkCenterAna", b =>
+                {
+                    b.HasOne("NYS_ERP.Models.CostCenter", "CostCenter")
+                        .WithMany()
+                        .HasForeignKey("CCMDOCTYPE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("COMCODE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LANCODE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.Operation", "Operation")
+                        .WithMany()
+                        .HasForeignKey("OPRDOCTYPE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NYS_ERP.Models.WorkCenter", "WorkCenter")
+                        .WithMany()
+                        .HasForeignKey("WCMDOCTYPE")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("CostCenter");
+
+                    b.Navigation("Language");
+
+                    b.Navigation("Operation");
+
+                    b.Navigation("WorkCenter");
                 });
 #pragma warning restore 612, 618
         }

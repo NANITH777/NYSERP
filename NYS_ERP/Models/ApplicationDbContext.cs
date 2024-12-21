@@ -19,10 +19,8 @@ namespace NYS_ERP.Models
         public DbSet<WorkCenter> WorkCenters { get; set; }
         public DbSet<Operation> Operations { get; set; }
         public DbSet<CostCenterAna> CostCenterAnas { get; set; }
-        //public DbSet<MaterialHeader> MaterialHeaders { get; set; }
-        //public DbSet<MaterialText> MaterialTexts { get; set; }
-        //public DbSet<RotaAna> RotaAnas { get; set; }
-
+        public DbSet<Material> Materials { get; set; }
+        public DbSet<WorkCenterAna> WorkCenterAnas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -163,41 +161,6 @@ namespace NYS_ERP.Models
             .Property(l => l.RowVersion)
             .IsRowVersion();
 
-
-            //// Configuration de MaterialHeader
-            //modelBuilder.Entity<MaterialHeader>()
-            //.HasKey(m => new {
-            //    m.COMCODE,
-            //    m.DOCTYPE,
-            //    m.DOCTYPETEXT,
-            //    m.ValidityStart,
-            //    m.ValidityEnd
-            //});
-
-            //// Configuration de MaterialText
-            //modelBuilder.Entity<MaterialText>()
-            //.HasKey(m => new {
-            //    m.CompanyCode,
-            //    m.MaterialDocType,
-            //    m.MaterialCode,
-            //    m.ValidityStart,
-            //    m.ValidityEnd,
-            //    m.LanguageCode
-            //});
-
-            //// Relation entre MaterialHeader et MaterialText
-            //modelBuilder.Entity<MaterialText>()
-            //.HasOne(mt => mt.MaterialHeader)
-            //.WithMany(mh => mh.Translations)
-            //.HasForeignKey(mt => new {
-            //    mt.CompanyCode,
-            //    mt.MaterialDocType,
-            //    mt.MaterialCode,
-            //    mt.ValidityStart,
-            //    mt.ValidityEnd
-            //});
-
-
             modelBuilder.Entity<CostCenterAna>(entity =>
             {
                 entity.HasKey(e => new
@@ -229,24 +192,92 @@ namespace NYS_ERP.Models
                     .IsRowVersion();
             });
 
-            //// Configuration for CostCenter (assuming this is the structure)
-            //modelBuilder.Entity<CostCenter>(entity =>
-            //{
-            //    // Configure composite primary key for CostCenter
-            //    entity.HasKey(e => new { e.CCMDOCTYPE, e.CCMDOCNUM });
-            //});
+            modelBuilder.Entity<Material>(entity =>
+            {
+                entity.HasKey(e => new
+                {
+                    e.COMCODE,
+                    e.MATDOCTYPE,
+                    e.MATDOCNUM,
+                    e.MATDOCFROM,
+                    e.MATDOCUNTIL,
+                    e.LANCODE
+                });
 
-            //// Configuration for Company
-            //modelBuilder.Entity<Company>(entity =>
-            //{
-            //    entity.HasKey(e => e.COMCODE);
-            //});
+                entity.HasOne(e => e.Company)
+                    .WithMany()
+                    .HasForeignKey(e => e.COMCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-            //// Configuration for Language
-            //modelBuilder.Entity<Language>(entity =>
-            //{
-            //    entity.HasKey(e => e.LANCODE);
-            //});
+                entity.HasOne(e => e.MaterialType)
+                    .WithMany()
+                    .HasForeignKey(e => new { e.MATDOCTYPE })
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Language)
+                    .WithMany()
+                    .HasForeignKey(e => e.LANCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Rota)
+                    .WithMany()
+                    .HasForeignKey(e => e.ROTDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.BOM)
+                    .WithMany()
+                    .HasForeignKey(e => e.BOMDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(e => e.RowVersion)
+                    .IsRowVersion();
+            });
+
+            modelBuilder.Entity<WorkCenterAna>()
+               .Property(w => w.WORKTIME)
+               .HasPrecision(3, 2);
+
+            modelBuilder.Entity<WorkCenterAna>(entity =>
+            {
+                entity.HasKey(e => new
+                {
+                    e.COMCODE,
+                    e.WCMDOCTYPE,
+                    e.WCMDOCNUM,
+                    e.WCMDOCFROM,
+                    e.WCMDOCUNTIL,
+                    e.LANCODE,
+                    e.OPRDOCTYPE
+                });
+
+                entity.HasOne(e => e.Company)
+                    .WithMany()
+                    .HasForeignKey(e => e.COMCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.WorkCenter)
+                    .WithMany()
+                    .HasForeignKey(e => new { e.WCMDOCTYPE })
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Language)
+                    .WithMany()
+                    .HasForeignKey(e => e.LANCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.CostCenter)
+                    .WithMany()
+                    .HasForeignKey(e => e.CCMDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Operation)
+                    .WithMany()
+                    .HasForeignKey(e => e.OPRDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(e => e.RowVersion)
+                    .IsRowVersion();
+            });
         }
     }
     
