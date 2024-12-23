@@ -1,0 +1,272 @@
+﻿@model BOMAnaVM
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row align-items-center">
+            <div class="col-1">
+                <a asp-controller="BOMAna" asp-action="Index" class="btn btn-outline-light btn-lg rounded-circle shadow-sm">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-10 text-center">
+                <h2 class="text-white py-2">@(Model.BOMAna.BOMDOCTYPE == null ? "Create" : "Update") Work Center Analysis</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form asp-action="Upsert" method="post" class="row" enctype="multipart/form-data">
+            <div class="row">
+                <!-- Primary Key Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Primary Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="BOMAna.COMCODE"
+                                                asp-items="Model.CompanyList"
+                                                class="form-select border-0 shadow @(Model.BOMAna.BOMDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.BOMAna.BOMDOCTYPE != null)">
+                                            <option disabled selected>-- Select Company --</option>
+                                        </select>
+                                        @if (Model.BOMAna.BOMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="BOMAna.COMCODE" />
+                                        }
+                                        <label asp-for="BOMAna.COMCODE" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.COMCODE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="BOMAna.BOMDOCTYPE" asp-items="Model.BOMList"
+                                                class="form-select border-0 shadow @(Model.BOMAna.BOMDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.BOMAna.BOMDOCTYPE != null)">
+                                            <option disabled selected>-- Select Work Center Type --</option>
+                                        </select>
+                                        @if (Model.BOMAna.BOMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="BOMAna.BOMDOCTYPE" />
+                                        }
+                                        <label asp-for="BOMAna.BOMDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.BOMDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.BOMDOCNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.BOMAna.BOMDOCTYPE != null)" />
+                                        <label asp-for="BOMAna.BOMDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.BOMDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="BOMAna.MATDOCTYPE" asp-items="Model.MaterialTypeList"
+                                                class="form-select border-0 shadow @(Model.BOMAna.BOMDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.BOMAna.BOMDOCTYPE != null)">
+                                            <option disabled selected>-- Select Material Type --</option>
+                                        </select>
+                                        @if (Model.BOMAna.BOMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="BOMAna.MATDOCTYPE" />
+                                        }
+                                        <label asp-for="BOMAna.MATDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.MATDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.MATDOCNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.BOMAna.BOMDOCTYPE != null)" />
+                                        <label asp-for="BOMAna.MATDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.MATDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.CONTENTNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.BOMAna.BOMDOCTYPE != null)" />
+                                        <label asp-for="BOMAna.CONTENTNUM" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.CONTENTNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date Range Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-info">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">Date Range</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.BOMDOCFROM" type="date"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.BOMAna.BOMDOCTYPE != null)" />
+                                        <label asp-for="BOMAna.BOMDOCFROM" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.BOMDOCFROM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.BOMDOCUNTIL" type="date"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.BOMAna.BOMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.BOMAna.BOMDOCTYPE != null)" />
+                                        <label asp-for="BOMAna.BOMDOCUNTIL" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.BOMDOCUNTIL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-success">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Additional Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.QUANTITY" class="form-control border-0 shadow" />
+                                        <label asp-for="BOMAna.QUANTITY" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.QUANTITY" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.DRAWNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="BOMAna.DRAWNUM" class="ms-2"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="BOMAna.COMPBOMDOCTYPE" asp-items="Model.BOMList" class="form-control border-0 shadow">
+                                            <option disabled selected>-- Select Item BOM Type --</option>
+                                        </select>
+                                        <label asp-for="BOMAna.COMPBOMDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.COMPBOMDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.COMPBOMDOCNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="BOMAna.COMPBOMDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.COMPBOMDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.COMPONENT" class="form-control border-0 shadow" />
+                                        <label asp-for="BOMAna.COMPONENT" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.COMPONENT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="BOMAna.COMPONENT_QUANTITY" class="form-control border-0 shadow" />
+                                        <label asp-for="BOMAna.COMPONENT_QUANTITY" class="ms-2"></label>
+                                        <span asp-validation-for="BOMAna.COMPONENT_QUANTITY" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description Section -->
+                @* <div class="col-12 mb-4">
+                    <div class="card border-warning">
+                        <div class="card-header bg-warning text-white">
+                            <h5 class="mb-0">Description</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea asp-for="BOMAna.BOMSTEXT" class="form-control border-0 shadow" style="height: 150px;"></textarea>
+                                        <label asp-for="BOMAna.BOMSTEXT" class="ms-2">Short Description</label>
+                                        <span asp-validation-for="BOMAna.BOMSTEXT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea asp-for="BOMAna.BOMLTEXT" class="form-control border-0 shadow" style="height: 150px;"></textarea>
+                                        <label asp-for="BOMAna.BOMLTEXT" class="ms-2">Long Description</label>
+                                        <span asp-validation-for="BOMAna.BOMLTEXT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+
+                <!-- Status Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-secondary">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="BOMAna.ISDELETED" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="BOMAna.ISDELETED">Is Deleted</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="BOMAna.ISPASSIVE" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="BOMAna.ISPASSIVE">Is Passive</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" asp-for="BOMAna.RowVersion" />
+
+                <!-- Action Buttons -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <button type="submit" class="btn btn-primary form-control">
+                                @(Model.BOMAna.BOMDOCTYPE == null ? "Create" : "Update")
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a asp-controller="BOMAna" asp-action="Index" class="btn btn-secondary border form-control">
+                                Back to List
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

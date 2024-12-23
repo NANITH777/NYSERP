@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="col-10 text-center">
-                <h2 class="text-white py-2">@(Model.Material.MATDOCTYPE == null ? "Create" : "Update") Material</h2>
+                <h2 class="text-white py-2">@(Model.IsNew ? "Create" : "Update") Material</h2>
             </div>
             <div class="col-1"></div>
         </div>
@@ -32,12 +32,12 @@
                                     <div class="form-floating mb-3">
                                         <select asp-for="Material.COMCODE"
                                                 asp-items="Model.CompanyList"
-                                                class="form-select border-0 shadow @(Model.Material.MATDOCTYPE != null ? "bg-white" : "")"
-                                                style="@(Model.Material.MATDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
-                                                disabled="@(Model.Material.MATDOCTYPE != null)">
+                                                class="form-select border-0 shadow @(!Model.IsNew ? "bg-white" : "")"
+                                                style="@(!Model.IsNew ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(!Model.IsNew)">
                                             <option disabled selected>-- Select Company --</option>
                                         </select>
-                                        @if (Model.Material.MATDOCTYPE != null)
+                                        @if (!Model.IsNew)
                                         {
                                             <input type="hidden" asp-for="Material.COMCODE" />
                                         }
@@ -48,12 +48,12 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <select asp-for="Material.MATDOCTYPE" asp-items="Model.MaterialTypeList"
-                                                class="form-select border-0 shadow @(Model.Material.MATDOCTYPE != null ? "bg-white" : "")"
-                                                style="@(Model.Material.MATDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
-                                                disabled="@(Model.Material.MATDOCTYPE != null)">
+                                                class="form-select border-0 shadow @(!Model.IsNew ? "bg-white" : "")"
+                                                style="@(!Model.IsNew ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(!Model.IsNew)">
                                             <option disabled selected>-- Select Material Type --</option>
                                         </select>
-                                        @if (Model.Material.MATDOCTYPE != null)
+                                        @if (!Model.IsNew)
                                         {
                                             <input type="hidden" asp-for="Material.MATDOCTYPE" />
                                         }
@@ -65,8 +65,8 @@
                                     <div class="form-floating mb-3">
                                         <input asp-for="Material.MATDOCNUM"
                                                class="form-control border-0 shadow bg-white"
-                                               style="@(Model.Material.MATDOCTYPE != null ? "opacity: 1;" : "")"
-                                               readonly="@(Model.Material.MATDOCTYPE != null)" />
+                                               style="@(!Model.IsNew ? "opacity: 1;" : "")"
+                                               readonly="@(!Model.IsNew)" />
                                         <label asp-for="Material.MATDOCNUM" class="ms-2"></label>
                                         <span asp-validation-for="Material.MATDOCNUM" class="text-danger"></span>
                                     </div>
@@ -74,12 +74,12 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <select asp-for="Material.LANCODE" asp-items="Model.LanguageList"
-                                                class="form-select border-0 shadow @(Model.Material.MATDOCTYPE != null ? "bg-white" : "")"
-                                                style="@(Model.Material.MATDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
-                                                disabled="@(Model.Material.MATDOCTYPE != null)">
+                                                class="form-select border-0 shadow @(!Model.IsNew ? "bg-white" : "")"
+                                                style="@(!Model.IsNew ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(!Model.IsNew)">
                                             <option disabled selected>-- Select Language --</option>
                                         </select>
-                                        @if (Model.Material.MATDOCTYPE != null)
+                                        @if (!Model.IsNew)
                                         {
                                             <input type="hidden" asp-for="Material.LANCODE" />
                                         }
@@ -104,8 +104,8 @@
                                     <div class="form-floating mb-3">
                                         <input asp-for="Material.MATDOCFROM" type="date"
                                                class="form-control border-0 shadow bg-white"
-                                               style="@(Model.Material.MATDOCTYPE != null ? "opacity: 1;" : "")"
-                                               readonly="@(Model.Material.MATDOCTYPE != null)" />
+                                               style="@(!Model.IsNew ? "opacity: 1;" : "")"
+                                               readonly="@(!Model.IsNew)" />
                                         <label asp-for="Material.MATDOCFROM" class="ms-2"></label>
                                         <span asp-validation-for="Material.MATDOCFROM" class="text-danger"></span>
                                     </div>
@@ -114,8 +114,8 @@
                                     <div class="form-floating mb-3">
                                         <input asp-for="Material.MATDOCUNTIL" type="date"
                                                class="form-control border-0 shadow bg-white"
-                                               style="@(Model.Material.MATDOCTYPE != null ? "opacity: 1;" : "")"
-                                               readonly="@(Model.Material.MATDOCTYPE != null)" />
+                                               style="@(!Model.IsNew ? "opacity: 1;" : "")"
+                                               readonly="@(!Model.IsNew)" />
                                         <label asp-for="Material.MATDOCUNTIL" class="ms-2"></label>
                                         <span asp-validation-for="Material.MATDOCUNTIL" class="text-danger"></span>
                                     </div>
@@ -191,9 +191,18 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-check form-switch">
-                                        <input asp-for="Material.ISBOM" class="form-check-input" id="isBomSwitch" />
-                                        <label asp-for="Material.ISBOM" class="form-check-label">Has BOM</label>
+                                    <h7>Has BOM</h7>
+                                    <div class="form-check">
+                                        <input asp-for="Material.ISBOM" type="radio" value="0" class="form-check-input" id="bomNo" />
+                                        <label for="bomNo" class="form-check-label">No</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input asp-for="Material.ISBOM" type="radio" value="1" class="form-check-input" id="bomYes" />
+                                        <label for="bomYes" class="form-check-label">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input asp-for="Material.ISBOM" type="radio" value="2" class="form-check-input" id="bomNever" />
+                                        <label for="bomNever" class="form-check-label">Never</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -212,9 +221,18 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-check form-switch">
-                                        <input asp-for="Material.ISROUTE" class="form-check-input" id="isRouteSwitch" />
-                                        <label asp-for="Material.ISROUTE" class="form-check-label">Has Route</label>
+                                    <h7>Has Route</h7>
+                                    <div class="form-check">
+                                        <input asp-for="Material.ISROUTE" type="radio" value="0" class="form-check-input" id="routeNo" />
+                                        <label for="routeNo" class="form-check-label">No</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input asp-for="Material.ISROUTE" type="radio" value="1" class="form-check-input" id="routeYes" />
+                                        <label for="routeYes" class="form-check-label">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input asp-for="Material.ISROUTE" type="radio" value="2" class="form-check-input" id="routeNever" />
+                                        <label for="routeNever" class="form-check-label">Never</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -290,16 +308,13 @@
     }
     <script>
         $(document).ready(function () {
-            $('#isBomSwitch').change(function () {
-                $('.bom-fields').toggle(this.checked);
+            $('input[name="Material.ISBOM"]').change(function () {
+                $('.bom-fields').toggle($(this).val() === "1");
             });
 
-            $('#isRouteSwitch').change(function () {
-                $('.route-fields').toggle(this.checked);
+            $('input[name="Material.ISROUTE"]').change(function () {
+                $('.route-fields').toggle($(this).val() === "1");
             });
-
-            $('.bom-fields').toggle($('#isBomSwitch').is(':checked'));
-            $('.route-fields').toggle($('#isRouteSwitch').is(':checked'));
         });
     </script>
 }

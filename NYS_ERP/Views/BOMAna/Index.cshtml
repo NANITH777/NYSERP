@@ -1,0 +1,156 @@
+﻿@model List<BOMAna>
+@{
+    var antiforgeryToken = @Html.AntiForgeryToken();
+}
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row align-items-center">
+            <div class="col-1">
+                <a href="/" class="btn btn-outline-light btn-lg rounded-circle shadow-sm back-button">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-10 text-center">
+                <h2 class="text-white py-2">BOM Analysis</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6"></div>
+            <div class="col-6 text-end">
+                <a asp-controller="BOMAna" asp-action="Upsert" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Create New Analysis
+                </a>
+            </div>
+        </div>
+
+        <table id="tblData" class="table table-bordered table-striped display" style="width:100%">
+            <thead>
+                <tr class="bg-light">
+                    <th>Company</th>
+                    <th>BOM Type</th>
+                    <th>BOm Number</th>
+                    <th>Valid From</th>
+                    <th>Valid Until</th>
+                    <th>Material Type</th>
+                    <th>Material Name</th>
+                    <th>Content Number</th>
+                    <th>Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><span class="badge bg-primary">@item.COMCODE</span></td>
+                        <td>@item.BOMDOCTYPE</td>
+                        <td>@item.BOMDOCNUM</td>
+                        <td>@item.BOMDOCFROM.ToString("dd MMM yyyy")</td>
+                        <td>@item.BOMDOCUNTIL.ToString("dd MMM yyyy")</td>
+                        <td><span class="badge bg-info">@item.MATDOCTYPE</span></td>
+                        <td>@item.MATDOCNUM</td>
+                        <td>@item.CONTENTNUM</td>
+                        <td>
+                            @if (item.ISDELETED)
+                            {
+                                <span class="badge bg-danger">Deleted</span>
+                            }
+                            else if (item.ISPASSIVE)
+                            {
+                                <span class="badge bg-warning">Passive</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a asp-controller="BOMAna"
+                                   asp-action="Upsert"
+                                   asp-route-comCode="@item.COMCODE"
+                                   asp-route-bomDoctype="@item.BOMDOCTYPE"
+                                   asp-route-bomDocNum="@item.BOMDOCNUM"
+                                   asp-route-bomDocFrom="@item.BOMDOCFROM.ToString("yyyy-MM-dd")"
+                                   asp-route-bomDocUntil="@item.BOMDOCUNTIL.ToString("yyyy-MM-dd")"
+                                   asp-route-matDocType="@item.MATDOCTYPE"
+                                   asp-route-matDocNum="@item.MATDOCNUM"
+                                   asp-route-conTentum="@item.CONTENTNUM"
+                                   class="btn btn-sm btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a asp-action="Delete"
+                                   asp-route-comCode="@item.COMCODE"
+                                   asp-route-bomDoctype="@item.BOMDOCTYPE"
+                                   asp-route-bomDocNum="@item.BOMDOCNUM"
+                                   asp-route-bomDocFrom="@item.BOMDOCFROM.ToString("yyyy-MM-dd")"
+                                   asp-route-bomDocUntil="@item.BOMDOCUNTIL.ToString("yyyy-MM-dd")"
+                                   asp-route-matDocType="@item.MATDOCTYPE"
+                                   asp-route-matDocNum="@item.MATDOCNUM"
+                                   asp-route-conTentum="@item.CONTENTNUM"
+                                   class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            if ($('#tblData').length > 0) {
+                try {
+                    var table = $('#tblData').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'copy',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-clipboard"></i> Copy'
+                            },
+                            {
+                                extend: 'excel',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-file-earmark-excel"></i> Excel'
+                            },
+                            {
+                                extend: 'pdf',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-file-earmark-pdf"></i> PDF'
+                            },
+                            {
+                                extend: 'print',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-printer"></i> Print'
+                            }
+                        ],
+                        language: {
+                            url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/fr.json"
+                        },
+                        pageLength: 10,
+                        responsive: true,
+                        order: [[0, 'asc']],
+                        columnDefs: [
+                            {
+                                targets: -1,
+                                orderable: false,
+                                searchable: false
+                            }
+                        ]
+                    });
+                } catch (error) {
+                    console.error("DataTable initialization error:", error);
+                }
+            }
+        });
+    </script>
+}

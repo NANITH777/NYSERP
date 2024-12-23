@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NYS_ERP.Models;
 
@@ -11,9 +12,11 @@ using NYS_ERP.Models;
 namespace NYS_ERP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241223135549_UpdateMat2")]
+    partial class UpdateMat2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,16 +104,18 @@ namespace NYS_ERP.Migrations
                         .HasColumnType("decimal(5,2)");
 
                     b.Property<string>("DRAWNUM")
+                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<bool>("ISDELETED")
-                        .HasColumnType("bit");
+                    b.Property<int?>("ISDELETED")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("ISPASSIVE")
-                        .HasColumnType("bit");
+                    b.Property<int?>("ISPASSIVE")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("QUANTITY")
+                    b.Property<decimal?>("QUANTITY")
+                        .IsRequired()
                         .HasPrecision(5, 2)
                         .HasColumnType("decimal(5,2)");
 
@@ -450,9 +455,11 @@ namespace NYS_ERP.Migrations
                         .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("BOMDOCNUM")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BOMDOCTYPE")
+                        .IsRequired()
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<decimal?>("BRUTWEIGHT")
@@ -462,7 +469,7 @@ namespace NYS_ERP.Migrations
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<int?>("ISBOM")
+                    b.Property<int>("ISBOM")
                         .HasColumnType("int");
 
                     b.Property<bool>("ISDELETED")
@@ -471,7 +478,7 @@ namespace NYS_ERP.Migrations
                     b.Property<bool>("ISPASSIVE")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ISROUTE")
+                    b.Property<int>("ISROUTE")
                         .HasColumnType("int");
 
                     b.Property<string>("MATLTEXT")
@@ -492,9 +499,11 @@ namespace NYS_ERP.Migrations
                         .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("ROTDOCNUM")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ROTDOCTYPE")
+                        .IsRequired()
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<byte[]>("RowVersion")
@@ -893,7 +902,8 @@ namespace NYS_ERP.Migrations
                     b.HasOne("NYS_ERP.Models.BOM", "BOM")
                         .WithMany()
                         .HasForeignKey("BOMDOCTYPE")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("NYS_ERP.Models.Company", "Company")
                         .WithMany()
@@ -916,7 +926,8 @@ namespace NYS_ERP.Migrations
                     b.HasOne("NYS_ERP.Models.Rota", "Rota")
                         .WithMany()
                         .HasForeignKey("ROTDOCTYPE")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("BOM");
 

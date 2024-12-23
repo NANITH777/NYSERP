@@ -58,13 +58,15 @@ namespace NYS_ERP.Models
         public decimal? BRUTWEIGHT { get; set; }
         [StringLength(3)]
         public string? BWUNIT { get; set; }
-        public bool ISBOM { get; set; }  
+        [Range(0, 2)]
+        public int? ISBOM { get; set; }  
 
-        public string BOMDOCTYPE { get; set; }  
-        public string BOMDOCNUM { get; set; }
-        public bool ISROUTE { get; set; }  
-        public string ROTDOCTYPE { get; set; }  
-        public string ROTDOCNUM { get; set; }
+        public string? BOMDOCTYPE { get; set; }  
+        public string? BOMDOCNUM { get; set; }
+        [Range(0, 2)]
+        public int? ISROUTE { get; set; }  
+        public string? ROTDOCTYPE { get; set; }  
+        public string? ROTDOCNUM { get; set; }
         public bool ISDELETED { get; set; }
         public bool ISPASSIVE { get; set; }
         [Required]

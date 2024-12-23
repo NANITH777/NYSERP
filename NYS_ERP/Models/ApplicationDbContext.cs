@@ -193,6 +193,10 @@ namespace NYS_ERP.Models
                     .IsRowVersion();
             });
 
+            modelBuilder.Entity<Material>()
+              .Property(b => b.ISBOM)
+              .IsRequired(false);
+
             modelBuilder.Entity<Material>(entity =>
             {
                 entity.HasKey(e => new
@@ -237,6 +241,7 @@ namespace NYS_ERP.Models
             modelBuilder.Entity<WorkCenterAna>()
                .Property(w => w.WORKTIME)
                .HasPrecision(3, 2);
+           
 
             modelBuilder.Entity<WorkCenterAna>(entity =>
             {
@@ -286,6 +291,9 @@ namespace NYS_ERP.Models
             modelBuilder.Entity<BOMAna>()
                .Property(w => w.COMPONENT_QUANTITY)
                .HasPrecision(5, 2);
+            modelBuilder.Entity<BOMAna>()
+               .Property(b => b.DRAWNUM)
+               .IsRequired(false);
 
             modelBuilder.Entity<BOMAna>(entity =>
             {

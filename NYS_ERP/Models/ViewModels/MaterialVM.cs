@@ -18,5 +18,12 @@ namespace NYS_ERP.Models.ViewModels
         public IEnumerable<SelectListItem> BOMList { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem> RotaList { get; set; }
+
+        public bool IsNew => string.IsNullOrEmpty(Material?.MATDOCTYPE) ||
+                       string.IsNullOrEmpty(Material?.MATDOCNUM) ||
+                       string.IsNullOrEmpty(Material?.COMCODE) ||
+                       string.IsNullOrEmpty(Material?.LANCODE) ||
+                       Material?.MATDOCFROM == default ||
+                       Material?.MATDOCUNTIL == default;
     }
 }

@@ -260,28 +260,3 @@
         </form>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-    <script>
-        $(document).ready(function() {
-            $('#WorkCenterAna_WCMDOCFROM, #WorkCenterAna_WCMDOCUNTIL').change(function() {
-                var fromDate = new Date($('#WorkCenterAna_WCMDOCFROM').val());
-                var untilDate = new Date($('#WorkCenterAna_WCMDOCUNTIL').val());
-
-                if (fromDate > untilDate) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Invalid Date',
-                        text: 'The start date must be before or equal to the end date.',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        $(this).val('');
-                    });
-                }
-            });
-        });
-    </script>
-}

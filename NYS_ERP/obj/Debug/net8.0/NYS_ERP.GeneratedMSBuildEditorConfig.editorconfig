@@ -26,6 +26,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\NYSERP\NYS_ERP
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/NYSERP/NYS_ERP/Views/BOMAna/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NQW5hXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NYSERP/NYS_ERP/Views/BOMAna/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NQW5hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NYSERP/NYS_ERP/Views/BOMAna/Upsert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NQW5hXFVwc2VydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/NYSERP/NYS_ERP/Views/BOM/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk9NXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

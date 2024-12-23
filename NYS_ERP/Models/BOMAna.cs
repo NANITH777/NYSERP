@@ -31,14 +31,14 @@ namespace NYS_ERP.Models
 
         [Required]
         [Range(0, 99999.99)]
-        public decimal? QUANTITY { get; set; } 
+        public decimal QUANTITY { get; set; } 
 
-        public int? ISDELETED { get; set; } 
+        public bool ISDELETED { get; set; } 
 
-        public int? ISPASSIVE { get; set; }
+        public bool ISPASSIVE { get; set; }
 
         [StringLength(25)]
-        public string DRAWNUM { get; set; }
+        public string? DRAWNUM { get; set; }
 
         [Key]
         [Required]
