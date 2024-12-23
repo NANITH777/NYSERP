@@ -51,25 +51,22 @@ namespace NYS_ERP.Models
         [Required]
         public string STUNIT { get; set; }
         [Column(TypeName = "decimal(12,3)")]
-        public decimal NETWEIGHT { get; set; }
+        public decimal? NETWEIGHT { get; set; }
         [StringLength(3)]
-        public string NWUNIT { get; set; }
+        public string? NWUNIT { get; set; }
         [Column(TypeName = "decimal(12,3)")]
-        public decimal BRUTWEIGHT { get; set; }
+        public decimal? BRUTWEIGHT { get; set; }
         [StringLength(3)]
-        public string BWUNIT { get; set; }
-        [Range(0, 2)]
-        public int ISBOM { get; set; }  
+        public string? BWUNIT { get; set; }
+        public bool ISBOM { get; set; }  
 
         public string BOMDOCTYPE { get; set; }  
         public string BOMDOCNUM { get; set; }
-        [Range(0, 2)]
-        public int ISROUTE { get; set; }  
+        public bool ISROUTE { get; set; }  
         public string ROTDOCTYPE { get; set; }  
-        public string ROTDOCNUM { get; set; }  
-
-        public int ISDELETED { get; set; }  
-        public int ISPASSIVE { get; set; }
+        public string ROTDOCNUM { get; set; }
+        public bool ISDELETED { get; set; }
+        public bool ISPASSIVE { get; set; }
         [Required]
         [StringLength(50)]
         public string MATSTEXT { get; set; }

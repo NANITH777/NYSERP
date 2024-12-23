@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NYS_ERP.Models;
 
@@ -11,9 +12,11 @@ using NYS_ERP.Models;
 namespace NYS_ERP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241223082704_UpdateMaterial")]
+    partial class UpdateMaterial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,84 +54,6 @@ namespace NYS_ERP.Migrations
                     b.HasIndex("COMCODE");
 
                     b.ToTable("BOMs");
-                });
-
-            modelBuilder.Entity("NYS_ERP.Models.BOMAna", b =>
-                {
-                    b.Property<string>("COMCODE")
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("BOMDOCTYPE")
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("BOMDOCNUM")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("BOMDOCFROM")
-                        .HasColumnType("DATE");
-
-                    b.Property<DateTime>("BOMDOCUNTIL")
-                        .HasColumnType("DATE");
-
-                    b.Property<string>("MATDOCTYPE")
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("MATDOCNUM")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int>("CONTENTNUM")
-                        .HasColumnType("int");
-
-                    b.Property<string>("COMPBOMDOCNUM")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("COMPBOMDOCTYPE")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("COMPONENT")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<decimal?>("COMPONENT_QUANTITY")
-                        .IsRequired()
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
-
-                    b.Property<string>("DRAWNUM")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int?>("ISDELETED")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ISPASSIVE")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("QUANTITY")
-                        .IsRequired()
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("COMCODE", "BOMDOCTYPE", "BOMDOCNUM", "BOMDOCFROM", "BOMDOCUNTIL", "MATDOCTYPE", "MATDOCNUM", "CONTENTNUM");
-
-                    b.HasIndex("BOMDOCTYPE");
-
-                    b.HasIndex("MATDOCTYPE");
-
-                    b.ToTable("BOMAnas");
                 });
 
             modelBuilder.Entity("NYS_ERP.Models.City", b =>
@@ -459,10 +384,11 @@ namespace NYS_ERP.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(4)");
 
-                    b.Property<decimal?>("BRUTWEIGHT")
+                    b.Property<decimal>("BRUTWEIGHT")
                         .HasColumnType("decimal(12,3)");
 
                     b.Property<string>("BWUNIT")
+                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
@@ -488,10 +414,11 @@ namespace NYS_ERP.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<decimal?>("NETWEIGHT")
+                    b.Property<decimal>("NETWEIGHT")
                         .HasColumnType("decimal(12,3)");
 
                     b.Property<string>("NWUNIT")
+                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
@@ -514,8 +441,8 @@ namespace NYS_ERP.Migrations
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<int>("SUPPLYTYPE")
-                        .HasColumnType("int");
+                    b.Property<bool>("SUPPLYTYPE")
+                        .HasColumnType("bit");
 
                     b.HasKey("COMCODE", "MATDOCTYPE", "MATDOCNUM", "MATDOCFROM", "MATDOCUNTIL", "LANCODE");
 
@@ -786,33 +713,6 @@ namespace NYS_ERP.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("NYS_ERP.Models.BOMAna", b =>
-                {
-                    b.HasOne("NYS_ERP.Models.BOM", "BOM")
-                        .WithMany()
-                        .HasForeignKey("BOMDOCTYPE")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("NYS_ERP.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("COMCODE")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("NYS_ERP.Models.MaterialType", "MaterialType")
-                        .WithMany()
-                        .HasForeignKey("MATDOCTYPE")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("BOM");
-
-                    b.Navigation("Company");
-
-                    b.Navigation("MaterialType");
                 });
 
             modelBuilder.Entity("NYS_ERP.Models.City", b =>

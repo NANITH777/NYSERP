@@ -163,7 +163,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <select asp-for="WorkCenterAna.CCMDOCTYPE" asp-items="Model.CostCenterList" class="form-control border-0 shadow">
-                                            <option disabled selected>-- Select Operation Type --</option>
+                                            <option disabled selected>-- Select Cost Center Type --</option>
                                         </select>
                                         <label asp-for="WorkCenterAna.CCMDOCTYPE" class="ms-2"></label>
                                         <span asp-validation-for="WorkCenterAna.CCMDOCTYPE" class="text-danger"></span>
@@ -246,7 +246,7 @@
                     <div class="row">
                         <div class="col-6 col-md-3">
                             <button type="submit" class="btn btn-primary form-control">
-                                @(Model.WorkCenterAna.WCMDOCNUM == null ? "Create" : "Update")
+                                @(Model.WorkCenterAna.WCMDOCTYPE == null ? "Create" : "Update")
                             </button>
                         </div>
                         <div class="col-6 col-md-3">

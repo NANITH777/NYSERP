@@ -21,6 +21,7 @@ namespace NYS_ERP.Models
         public DbSet<CostCenterAna> CostCenterAnas { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<WorkCenterAna> WorkCenterAnas { get; set; }
+        public DbSet<BOMAna> BOMAnas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -273,6 +274,46 @@ namespace NYS_ERP.Models
                 entity.HasOne(e => e.Operation)
                     .WithMany()
                     .HasForeignKey(e => e.OPRDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(e => e.RowVersion)
+                    .IsRowVersion();
+            });
+
+            modelBuilder.Entity<BOMAna>()
+               .Property(w => w.QUANTITY)
+               .HasPrecision(5, 2);
+            modelBuilder.Entity<BOMAna>()
+               .Property(w => w.COMPONENT_QUANTITY)
+               .HasPrecision(5, 2);
+
+            modelBuilder.Entity<BOMAna>(entity =>
+            {
+                entity.HasKey(e => new
+                {
+                    e.COMCODE,
+                    e.BOMDOCTYPE,
+                    e.BOMDOCNUM,
+                    e.BOMDOCFROM,
+                    e.BOMDOCUNTIL,
+                    e.MATDOCTYPE,
+                    e.MATDOCNUM,
+                    e.CONTENTNUM
+                });
+
+                entity.HasOne(e => e.Company)
+                    .WithMany()
+                    .HasForeignKey(e => e.COMCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.BOM)
+                    .WithMany()
+                    .HasForeignKey(e => new { e.BOMDOCTYPE })
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.MaterialType)
+                    .WithMany()
+                    .HasForeignKey(e => e.MATDOCTYPE)
                     .OnDelete(DeleteBehavior.Restrict);
 
                 entity.Property(e => e.RowVersion)

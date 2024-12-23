@@ -16,6 +16,7 @@
         ICCRepository CostCenterAna { get; }
         IMaterialRepository Material {  get; }
         IWCRepository WorkCenterAna { get; }
+        IBOMAnaRepository BOMAna { get; }
         void Save();
     }
 }
