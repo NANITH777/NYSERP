@@ -98,114 +98,57 @@
 
 @section Scripts {
     <script>
-        // function handleFormSubmit(event) {
-        //     event.preventDefault();
-        //     const form = event.target;
-
-        //     Swal.fire({
-        //         title: 'Mise à jour en cours...',
-        //         text: 'Veuillez patienter',
-        //         allowOutsideClick: false,
-        //         allowEscapeKey: false,
-        //         showConfirmButton: false,
-        //         didOpen: () => {
-        //             Swal.showLoading();
-        //         }
-        //     });
-
-        //     // Get form data
-        //     const formData = new FormData(form);
-
-        //     $.ajax({
-        //         url: form.action,
-        //         type: 'POST',
-        //         data: formData,
-        //         processData: false,
-        //         contentType: false,
-        //         success: function (response) {
-        //             if (response.success) {
-        //                 Swal.fire({
-        //                     title: 'success!',
-        //                     text: response.message,
-        //                     icon: 'success'
-        //                 }).then(() => {
-        //                     window.location.href = '/CostCenterAna/Index';
-        //                 });
-        //             } else {
-        //                 Swal.fire({
-        //                     title: 'Erreur',
-        //                     text: response.message || 'Une erreur est survenue lors de la mise à jour',
-        //                     icon: 'error'
-        //                 });
-        //             }
-        //         },
-        //         error: function (xhr, status, error) {
-        //             console.error('Update Error:', {
-        //                 status: status,
-        //                 error: error,
-        //                 response: xhr.responseText
-        //             });
-
-        //             Swal.fire({
-        //                 title: 'Erreur',
-        //                 text: 'Une erreur est survenue lors de la mise à jour. Veuillez réessayer.',
-        //                 icon: 'error'
-        //             });
-        //         }
-        //     });
-        // }
-
         $(document).ready(function () {
-    if ($('#tblData').length > 0) {
-        try {
-            var table = $('#tblData').DataTable({
-                dom: 'Bfrtip', 
-                buttons: [
-                    {
-                        extend: 'copy',
-                        className: 'btn btn-secondary btn-sm',
-                        text: '<i class="bi bi-clipboard"></i> Copy'
-                    },
-                    {
-                        extend: 'excel',
-                        className: 'btn btn-secondary btn-sm',
-                        text: '<i class="bi bi-file-earmark-excel"></i> Excel'
-                    },
-                    {
-                        extend: 'pdf',
-                        className: 'btn btn-secondary btn-sm',
-                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'btn btn-secondary btn-sm',
-                        text: '<i class="bi bi-printer"></i> Print'
-                    }
-                ],
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/fr.json"
-                },
-                pageLength: 10,
-                responsive: true,
-                order: [[0, 'asc']], 
-                columnDefs: [
-                    {
-                        targets: -1, 
-                        orderable: false, 
-                        searchable: false
-                    }
-                ]
-            });
+            if ($('#tblData').length > 0) {
+                try {
+                    var table = $('#tblData').DataTable({
+                        dom: 'Bfrtip', 
+                        buttons: [
+                            {
+                                extend: 'copy',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-clipboard"></i> Copy'
+                            },
+                            {
+                                extend: 'excel',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-file-earmark-excel"></i> Excel'
+                            },
+                            {
+                                extend: 'pdf',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-file-earmark-pdf"></i> PDF'
+                            },
+                            {
+                                extend: 'print',
+                                className: 'btn btn-secondary btn-sm',
+                                text: '<i class="bi bi-printer"></i> Print'
+                            }
+                        ],
+                        language: {
+                            url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/fr.json"
+                        },
+                        pageLength: 10,
+                        responsive: true,
+                        order: [[0, 'asc']], 
+                        columnDefs: [
+                            {
+                                targets: -1, 
+                                orderable: false, 
+                                searchable: false
+                            }
+                        ]
+                    });
 
-            $('.dt-buttons button').addClass('btn btn-secondary btn-sm');
-        } catch (error) {
-            console.error('Erreur lors de l\'initialisation de DataTable:', error);
-        }
-    }
+                    $('.dt-buttons button').addClass('btn btn-secondary btn-sm');
+                } catch (error) {
+                    console.error('Erreur lors de l\'initialisation de DataTable:', error);
+                }
+            }
 
-    if ($('form').length > 0) {
-        $('form').on('submit', handleFormSubmit);
-    }
-});
+            if ($('form').length > 0) {
+                $('form').on('submit', handleFormSubmit);
+            }
+        });
     </script>
 }

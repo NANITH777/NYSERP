@@ -218,6 +218,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/NYSERP/NYS_ERP/Views/WorkCenterAna/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0NlbnRlckFuYVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/NYSERP/NYS_ERP/Views/WorkCenterAna/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0NlbnRlckFuYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

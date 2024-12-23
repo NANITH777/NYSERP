@@ -38,11 +38,9 @@ namespace NYS_ERP.Models
         [Range(0, 24)]
         public decimal WORKTIME { get; set; }
 
-        [Range(0, 1)]
-        public int ISDELETED { get; set; }
+        public bool ISDELETED { get; set; }
 
-        [Range(0, 1)]
-        public int ISPASSIVE { get; set; }
+        public bool ISPASSIVE { get; set; }
 
         [Key]
         [Required]
