@@ -74,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/NYSERP/NYS_ERP/Views/CostCenterAna/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdENlbnRlckFuYVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/NYSERP/NYS_ERP/Views/CostCenterAna/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdENlbnRlckFuYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

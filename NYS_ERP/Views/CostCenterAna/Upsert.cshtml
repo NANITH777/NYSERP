@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="col-10 text-center">
-                <h2 class="text-white py-2">@(Model.CostCenterAna.CCMDOCNUM == null ? "Create" : "Update") Cost Center Analysis</h2>
+                <h2 class="text-white py-2">@(Model.CostCenterAna.CCMDOCTYPE == null ? "Create" : "Update") Cost Center Analysis</h2>
             </div>
             <div class="col-1"></div>
         </div>
@@ -27,34 +27,59 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <select asp-for="CostCenterAna.COMCODE" asp-items="Model.CompanyList" class="form-select border-0 shadow">
+                                        <select asp-for="CostCenterAna.COMCODE"
+                                                asp-items="Model.CompanyList"
+                                                class="form-select border-0 shadow @(Model.CostCenterAna.CCMDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.CostCenterAna.CCMDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.CostCenterAna.CCMDOCTYPE != null)">
                                             <option disabled selected>-- Select Company --</option>
                                         </select>
+                                        @if (Model.CostCenterAna.CCMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="CostCenterAna.COMCODE" />
+                                        }
                                         <label asp-for="CostCenterAna.COMCODE" class="ms-2"></label>
                                         <span asp-validation-for="CostCenterAna.COMCODE" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <select asp-for="CostCenterAna.CCMDOCTYPE" asp-items="Model.CostCenterList" class="form-select border-0 shadow">
+                                        <select asp-for="CostCenterAna.CCMDOCTYPE" asp-items="Model.CostCenterList"
+                                                class="form-select border-0 shadow @(Model.CostCenterAna.CCMDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.CostCenterAna.CCMDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.CostCenterAna.CCMDOCTYPE != null)">
                                             <option disabled selected>-- Select Cost Center Type --</option>
                                         </select>
+                                        @if (Model.CostCenterAna.CCMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="CostCenterAna.CCMDOCTYPE" />
+                                        }
                                         <label asp-for="CostCenterAna.CCMDOCTYPE" class="ms-2"></label>
                                         <span asp-validation-for="CostCenterAna.CCMDOCTYPE" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="CostCenterAna.CCMDOCNUM" class="form-control border-0 shadow" />
+                                        <input asp-for="CostCenterAna.CCMDOCNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.CostCenterAna.CCMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.CostCenterAna.CCMDOCTYPE != null)" />
                                         <label asp-for="CostCenterAna.CCMDOCNUM" class="ms-2"></label>
                                         <span asp-validation-for="CostCenterAna.CCMDOCNUM" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <select asp-for="CostCenterAna.LANCODE" asp-items="Model.LanguageList" class="form-select border-0 shadow">
+                                        <select asp-for="CostCenterAna.LANCODE" asp-items="Model.LanguageList"
+                                                class="form-select border-0 shadow @(Model.CostCenterAna.CCMDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.CostCenterAna.CCMDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.CostCenterAna.CCMDOCTYPE != null)">
                                             <option disabled selected>-- Select Language --</option>
                                         </select>
+                                        @if (Model.CostCenterAna.CCMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="CostCenterAna.LANCODE" />
+                                        }
                                         <label asp-for="CostCenterAna.LANCODE" class="ms-2"></label>
                                         <span asp-validation-for="CostCenterAna.LANCODE" class="text-danger"></span>
                                     </div>
@@ -65,7 +90,7 @@
                 </div>
 
                 <!-- Date Range Section -->
-                <div class="col-12 mb-4">
+                <<div class="col-12 mb-4">
                     <div class="card border-info">
                         <div class="card-header bg-info text-white">
                             <h5 class="mb-0">Date Range</h5>
@@ -74,14 +99,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="CostCenterAna.CCMDOCFROM" type="date" class="form-control border-0 shadow" />
+                                        <input asp-for="CostCenterAna.CCMDOCFROM" type="date"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.CostCenterAna.CCMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.CostCenterAna.CCMDOCTYPE != null)" />
                                         <label asp-for="CostCenterAna.CCMDOCFROM" class="ms-2"></label>
                                         <span asp-validation-for="CostCenterAna.CCMDOCFROM" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="CostCenterAna.CCMDOCUNTIL" type="date" class="form-control border-0 shadow" />
+                                        <input asp-for="CostCenterAna.CCMDOCUNTIL" type="date"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.CostCenterAna.CCMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.CostCenterAna.CCMDOCTYPE != null)" />
                                         <label asp-for="CostCenterAna.CCMDOCUNTIL" class="ms-2"></label>
                                         <span asp-validation-for="CostCenterAna.CCMDOCUNTIL" class="text-danger"></span>
                                     </div>
@@ -169,6 +200,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" asp-for="CostCenterAna.RowVersion" />
 
                 <!-- Action Buttons -->
                 <div class="col-12">
