@@ -21,6 +21,7 @@ namespace NYS_ERP.Repository
         public IMaterialRepository Material { get; private set; }
         public IWCRepository WorkCenterAna { get; private set; }
         public IBOMAnaRepository BOMAna { get; private set; }
+        public IRotaAnaRepository RotaAna { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -40,6 +41,7 @@ namespace NYS_ERP.Repository
             Material = new MaterialRepository(_db);
             WorkCenterAna = new WCRepository(_db);
             BOMAna = new BOMAnaRepository(_db);
+            RotaAna = new RotaAnaRepository(_db);
         }
         public void Save()
         {

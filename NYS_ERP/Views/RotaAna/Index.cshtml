@@ -1,4 +1,4 @@
-﻿@model List<BOMAna>
+﻿@model List<RotaAna>
 @{
     var antiforgeryToken = @Html.AntiForgeryToken();
 }
@@ -11,7 +11,7 @@
                 </a>
             </div>
             <div class="col-10 text-center">
-                <h2 class="text-white py-2">BOM Analysis</h2>
+                <h2 class="text-white py-2">Rota Analysis</h2>
             </div>
             <div class="col-1"></div>
         </div>
@@ -21,7 +21,7 @@
         <div class="row pb-3">
             <div class="col-6"></div>
             <div class="col-6 text-end">
-                <a asp-controller="BOMAna" asp-action="Upsert" class="btn btn-primary">
+                <a asp-controller="RotaAna" asp-action="Upsert" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i> Create New Analysis
                 </a>
             </div>
@@ -31,13 +31,15 @@
             <thead>
                 <tr class="bg-light">
                     <th>Company</th>
-                    <th>BOM Type</th>
-                    <th>BOM Number</th>
+                    <th>Rota Type</th>
+                    <th>Rota Number</th>
                     <th>Valid From</th>
                     <th>Valid Until</th>
                     <th>Material Type</th>
                     <th>Material Name</th>
-                    <th>Content Number</th>
+                    <th>Operation Number</th>
+                    <th>BOM Type</th>
+                    <th>BOM Number</th>
                     <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -47,13 +49,15 @@
                 {
                     <tr>
                         <td><span class="badge bg-primary">@item.COMCODE</span></td>
-                        <td>@item.BOMDOCTYPE</td>
-                        <td>@item.BOMDOCNUM</td>
-                        <td>@item.BOMDOCFROM.ToString("dd MMM yyyy")</td>
-                        <td>@item.BOMDOCUNTIL.ToString("dd MMM yyyy")</td>
+                        <td>@item.ROTDOCTYPE</td>
+                        <td>@item.ROTDOCNUM</td>
+                        <td>@item.ROTDOCFROM.ToString("dd MMM yyyy")</td>
+                        <td>@item.ROTDOCUNTIL.ToString("dd MMM yyyy")</td>
                         <td><span class="badge bg-info">@item.MATDOCTYPE</span></td>
                         <td>@item.MATDOCNUM</td>
-                        <td>@item.CONTENTNUM</td>
+                        <td>@item.OPRNUM</td>
+                        <td><span class="badge bg-info">@item.BOMDOCTYPE</span></td>
+                        <td>@item.BOMDOCNUM</td>
                         <td>
                             @if (item.ISDELETED)
                             {
@@ -70,27 +74,33 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a asp-controller="BOMAna"
+                                <a asp-controller="RotaAna"
                                    asp-action="Upsert"
                                    asp-route-comCode="@item.COMCODE"
-                                   asp-route-bomDoctype="@item.BOMDOCTYPE"
-                                   asp-route-bomDocNum="@item.BOMDOCNUM"
-                                   asp-route-bomDocFrom="@item.BOMDOCFROM.ToString("yyyy-MM-dd")"
-                                   asp-route-bomDocUntil="@item.BOMDOCUNTIL.ToString("yyyy-MM-dd")"
+                                   asp-route-rotDoctype="@item.ROTDOCTYPE"
+                                   asp-route-rotDocNum="@item.ROTDOCNUM"
+                                   asp-route-rotDocFrom="@item.ROTDOCFROM.ToString("yyyy-MM-dd")"
+                                   asp-route-rotDocUntil="@item.ROTDOCUNTIL.ToString("yyyy-MM-dd")"
                                    asp-route-matDocType="@item.MATDOCTYPE"
                                    asp-route-matDocNum="@item.MATDOCNUM"
+                                   asp-route-oprNum="@item.OPRNUM"
+                                   asp-route-bomDocType="@item.BOMDOCTYPE"
+                                   asp-route-bomDocNum="@item.BOMDOCNUM"
                                    asp-route-conTentum="@item.CONTENTNUM"
                                    class="btn btn-sm btn-primary">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <a asp-action="Delete"
                                    asp-route-comCode="@item.COMCODE"
-                                   asp-route-bomDoctype="@item.BOMDOCTYPE"
-                                   asp-route-bomDocNum="@item.BOMDOCNUM"
-                                   asp-route-bomDocFrom="@item.BOMDOCFROM.ToString("yyyy-MM-dd")"
-                                   asp-route-bomDocUntil="@item.BOMDOCUNTIL.ToString("yyyy-MM-dd")"
+                                   asp-route-rotDoctype="@item.ROTDOCTYPE"
+                                   asp-route-rotDocNum="@item.ROTDOCNUM"
+                                   asp-route-rotDocFrom="@item.ROTDOCFROM.ToString("yyyy-MM-dd")"
+                                   asp-route-rotDocUntil="@item.ROTDOCUNTIL.ToString("yyyy-MM-dd")"
                                    asp-route-matDocType="@item.MATDOCTYPE"
                                    asp-route-matDocNum="@item.MATDOCNUM"
+                                   asp-route-oprNum="@item.OPRNUM"
+                                   asp-route-bomDocType="@item.BOMDOCTYPE"
+                                   asp-route-bomDocNum="@item.BOMDOCNUM"
                                    asp-route-conTentum="@item.CONTENTNUM"
                                    class="btn btn-sm btn-danger">
                                     <i class="bi bi-trash-fill"></i>

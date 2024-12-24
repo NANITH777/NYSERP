@@ -22,6 +22,7 @@ namespace NYS_ERP.Models
         public DbSet<Material> Materials { get; set; }
         public DbSet<WorkCenterAna> WorkCenterAnas { get; set; }
         public DbSet<BOMAna> BOMAnas { get; set; }
+        public DbSet<RotaAna> RotaAnas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -322,6 +323,75 @@ namespace NYS_ERP.Models
                 entity.HasOne(e => e.MaterialType)
                     .WithMany()
                     .HasForeignKey(e => e.MATDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(e => e.RowVersion)
+                    .IsRowVersion();
+            });
+
+            modelBuilder.Entity<RotaAna>()
+              .Property(w => w.QUANTITY)
+              .HasPrecision(5, 2);
+            modelBuilder.Entity<RotaAna>()
+              .Property(w => w.COMPONENT_QUANTITY)
+              .HasPrecision(5, 2);
+
+            modelBuilder.Entity<RotaAna>()
+              .Property(w => w.SETUPTIME)
+              .HasPrecision(3, 2);
+            modelBuilder.Entity<RotaAna>()
+              .Property(w => w.MACHINETIME)
+              .HasPrecision(3, 2);
+            modelBuilder.Entity<RotaAna>()
+              .Property(w => w.LABOURTIME)
+              .HasPrecision(3, 2);
+
+
+            modelBuilder.Entity<RotaAna>(entity =>
+            {
+                entity.HasKey(e => new
+                {
+                    e.COMCODE,
+                    e.ROTDOCTYPE,
+                    e.ROTDOCNUM,
+                    e.ROTDOCFROM,
+                    e.ROTDOCUNTIL,
+                    e.MATDOCTYPE,
+                    e.MATDOCNUM,
+                    e.OPRNUM,
+                    e.BOMDOCTYPE,
+                    e.BOMDOCNUM,
+                    e.CONTENTNUM,
+                });
+
+                entity.HasOne(e => e.Company)
+                    .WithMany()
+                    .HasForeignKey(e => e.COMCODE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.WorkCenter)
+                    .WithMany()
+                    .HasForeignKey(e => new { e.WCMDOCTYPE })
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Rota)
+                    .WithMany()
+                    .HasForeignKey(e => e.ROTDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.BOM)
+                    .WithMany()
+                    .HasForeignKey(e => e.BOMDOCTYPE)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.MaterialType)
+                   .WithMany()
+                   .HasForeignKey(e => e.MATDOCTYPE)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Operation)
+                    .WithMany()
+                    .HasForeignKey(e => e.OPRDOCTYPE)
                     .OnDelete(DeleteBehavior.Restrict);
 
                 entity.Property(e => e.RowVersion)

@@ -139,7 +139,7 @@
                                         <label asp-for="Material.NETWEIGHT" class="ms-2">Net Weight</label>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <div class="form-floating mb-3">
                                         <input asp-for="Material.NWUNIT" class="form-control border-0 shadow" />
                                         <label asp-for="Material.NWUNIT" class="ms-2">Unit</label>
@@ -151,20 +151,20 @@
                                         <label asp-for="Material.BRUTWEIGHT" class="ms-2">Brut Weight</label>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <div class="form-floating mb-3">
                                         <input asp-for="Material.BWUNIT" class="form-control border-0 shadow" />
                                         <label asp-for="Material.BWUNIT" class="ms-2">Unit</label>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-floating mb-3">
                                         <input asp-for="Material.STUNIT" class="form-control border-0 shadow" />
                                         <label asp-for="Material.STUNIT" class="ms-2">Stock Unit</label>
                                         <span asp-validation-for="Material.STUNIT" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <h7>Supply Type</h7>
                                     <div class="form-check">
                                         <input asp-for="Material.SUPPLYTYPE" class="form-check-input" type="radio" value="0" id="supplyTypePurchased" />
@@ -176,7 +176,7 @@
                                     </div>
                                     <span asp-validation-for="Material.SUPPLYTYPE" class="text-danger"></span>
                                 </div>
-
+@* 
                                 <div class="col-md-3">
                                     <div class="form-check form-switch">
                                         <input asp-for="Material.ISPASSIVE" class="form-check-input" />
@@ -189,7 +189,7 @@
                                         <label asp-for="Material.ISDELETED" class="form-check-label">Is Deleted</label>
                                     </div>
                                 </div>
-
+ *@
                                 <div class="col-md-4">
                                     <h7>Has BOM</h7>
                                     <div class="form-check">
@@ -215,8 +215,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating mb-3 bom-fields" style="display: none;">
-                                        <input asp-for="Material.BOMDOCNUM" class="form-control" />
-                                        <label asp-for="Material.BOMDOCNUM">BOM Number</label>
+                                        <input asp-for="Material.BOMDOCNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="Material.BOMDOCNUM" class="ms-2">BOM Number</label>
                                     </div>
                                 </div>
 
@@ -245,8 +245,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating mb-3 route-fields" style="display: none;">
-                                        <input asp-for="Material.ROTDOCNUM" class="form-control" />
-                                        <label asp-for="Material.ROTDOCNUM">Route Number</label>
+                                        <input asp-for="Material.ROTDOCNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="Material.ROTDOCNUM" class="ms-2">Route Number</label>
                                     </div>
                                 </div>
                             </div>
@@ -275,6 +275,31 @@
                                         <textarea asp-for="Material.MATLTEXT" class="form-control border-0 shadow" style="height: 150px;"></textarea>
                                         <label asp-for="Material.MATLTEXT" class="ms-2">Long Description</label>
                                         <span asp-validation-for="Material.MATLTEXT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-secondary">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="Material.ISDELETED" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="Material.ISDELETED">Is Deleted</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="Material.ISPASSIVE" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="Material.ISPASSIVE">Is Passive</label>
                                     </div>
                                 </div>
                             </div>

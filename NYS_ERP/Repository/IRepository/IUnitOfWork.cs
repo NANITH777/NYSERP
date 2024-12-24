@@ -17,6 +17,7 @@
         IMaterialRepository Material {  get; }
         IWCRepository WorkCenterAna { get; }
         IBOMAnaRepository BOMAna { get; }
+        IRotaAnaRepository RotaAna { get; }
         void Save();
     }
 }

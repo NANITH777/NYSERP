@@ -6,105 +6,102 @@ namespace NYS_ERP.Models
 {
     public class RotaAna
     {
-        //[StringLength(4)]
-        //[Required]
-        //public string COMCODE { get; set; }
+        [Key]
+        public string COMCODE { get; set; }
 
-        //[ForeignKey("COMCODE")]
-        //[ValidateNever]
-        //public Company Company { get; set; }
+        [Key]
+        public string ROTDOCTYPE { get; set; }
 
-        //[ForeignKey("Rota")]
-        //[ValidateNever]
-        //public Rota Rota { get; set; } 
+        [Key]
+        public string ROTDOCNUM { get; set; } 
 
-        //[StringLength(4)]
-        //[Required]
-        //public string ROTDOCTYPE { get; set; } // Ürün Ağacı/Maliyet Merkezi Tipi
+        [Key]
+        [Column(TypeName = "DATE")]
+        public DateTime ROTDOCFROM { get; set; }
 
-        //[StringLength(25)]
-        //[Required]
-        //public string ROTDOCNUM { get; set; } // Ürün Ağacı/Maliyet Merkezi Kodu
+        [Key]
+        [Column(TypeName = "DATE")]
+        public DateTime ROTDOCUNTIL { get; set; }
 
-        //[Required]
-        //public DateTime ROTDOCFROM { get; set; } // Geçerlilik Başlangıç
+        [Key]
+        public string MATDOCTYPE { get; set; } 
 
-        //[Required]
-        //public DateTime ROTDOCUNTIL { get; set; } // Geçerlilik Bitiş
+        [Key]
+        public string MATDOCNUM { get; set; } 
 
-        //[ForeignKey("MaterialType")]
-        //[ValidateNever]
-        //public MaterialType MaterialType { get; set; } 
+        [Required]
+        [Range(0, 99999.99)]
+        public decimal QUANTITY { get; set; } 
 
-        //[StringLength(4)]
-        //[Required]
-        //public string MATDOCTYPE { get; set; } // Malzeme Tipi
+        public bool ISDELETED { get; set; } 
 
-        //[StringLength(25)]
-        //[Required]
-        //public string MATDOCNUM { get; set; } // Malzeme Kodu
+        public bool ISPASSIVE { get; set; } 
 
-        //[Range(0, 99999.99)]
-        //public decimal? QUANTITY { get; set; } // Temel/Bileşen Miktar
+        [StringLength(25)]
+        public string? DRAWNUM { get; set; } 
 
-        //public bool? ISDELETED { get; set; } // Silindi? (0: Hayır, 1: Evet)
+        [Key]
+        [Range(0, 9999)]
+        public int OPRNUM { get; set; } 
 
-        //public bool? ISPASSIVE { get; set; } // Pasif mi? (0: Hayır, 1: Evet)
+        public string WCMDOCTYPE { get; set; } 
 
-        //[StringLength(25)]
-        //public string DRAWNUM { get; set; } // Çizim Numarası
+        public string WCMDOCNUM { get; set; } 
 
-        //// Specific to Operation Content
-        //[Required]
-        //public int? OPRNUM { get; set; } // Operasyon Numarası
+        public string OPRDOCTYPE { get; set; } 
 
-        //[ForeignKey("WorkCenter")]
-        //[ValidateNever]
-        //public WorkCenter WorkCenter { get; set; } // Relation avec la table WorkCenter
+        [Range(0, 999.99)]
+        public decimal? SETUPTIME { get; set; } 
 
-        //[StringLength(4)]
-        //public string WCMDOCTYPE { get; set; } // İş Merkezi Tipi
+        [Range(0, 999.99)]
+        public decimal? MACHINETIME { get; set; } 
 
-        //[StringLength(25)]
-        //public string WCMDOCNUM { get; set; } // İş Merkezi Kodu
+        [Range(0, 999.99)]
+        public decimal? LABOURTIME { get; set; } 
 
-        //[StringLength(4)]
-        //public string OPRDOCTYPE { get; set; } // Operasyon Kodu
+        [Key]
+        public string BOMDOCTYPE { get; set; } 
 
-        //[Range(0, 99.99)]
-        //public decimal? SETUPTIME { get; set; } // Operasyon Hazırlık Süresi(Saat)
+        [Key]
+        public string BOMDOCNUM { get; set; } 
 
-        //[Range(0, 99.99)]
-        //public decimal? MACHINETIME { get; set; } // Operasyon Makine Süresi(Saat)
+        [Key]
+        [Range(1, 9999)]
+        public int CONTENTNUM { get; set; } 
 
-        //[Range(0, 99.99)]
-        //public decimal? LABOURTIME { get; set; } // Operasyon İşçilik Süresi(Saat)
+        [StringLength(25)]
+        public string COMPONENT { get; set; } 
 
-        //// Specific to BOM Content
-        //[ForeignKey("BOM")]
-        //[ValidateNever]
-        //public BOM BOM { get; set; } 
+        [Required]
+        [Range(0, 99999.99)]
+        public decimal? COMPONENT_QUANTITY { get; set; } 
 
-        //[StringLength(4)]
-        //[Required]
-        //public string BOMDOCTYPE { get; set; } // Ürün Ağacı Tipi
+        [Timestamp]
+        [Required]
+        public byte[] RowVersion { get; set; } = Array.Empty<byte>();
 
-        //[StringLength(25)]
-        //[Required]
-        //public string BOMDOCNUM { get; set; } // Ürün Ağacı Kodu
+        [ForeignKey("COMCODE")]
+        [ValidateNever]
+        public Company Company { get; set; }
 
-        //[Required]
-        //public int? CONTENTNUM { get; set; } // İçerik Numarası
+        [ForeignKey("ROTDOCTYPE")]
+        [ValidateNever]
+        public Rota Rota { get; set; }
 
-        //[StringLength(25)]
-        //public string COMPONENT { get; set; } // Bileşen Kodu
+        [ForeignKey("BOMDOCTYPE")]
+        [ValidateNever]
+        public BOM BOM { get; set; }
 
-        //[Range(0, 99999.99)]
-        //public decimal? COMPONENTQUANTITY { get; set; } // Bileşen Miktarı (Quantité de composant)
+        [ForeignKey("MATDOCTYPE")]
+        [ValidateNever]
+        public MaterialType MaterialType { get; set; }
+        [ForeignKey("WCMDOCTYPE")]
+        [ValidateNever]
+        public WorkCenter WorkCenter { get; set; }
 
-        //[Timestamp]
-        //[Required]
-        //public byte[] RowVersion { get; set; } = Array.Empty<byte>();
+        [ForeignKey("OPRDOCTYPE")]
+        [ValidateNever]
+        public Operation Operation { get; set; }
 
     }
 }

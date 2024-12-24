@@ -1,0 +1,310 @@
+﻿@model RotaAnaVM
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row align-items-center">
+            <div class="col-1">
+                <a asp-controller="RotaAna" asp-action="Index" class="btn btn-outline-light btn-lg rounded-circle shadow-sm">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-10 text-center">
+                <h2 class="text-white py-2">@(Model.RotaAna.ROTDOCTYPE == null ? "Create" : "Update") Rota Analysis</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form asp-action="Upsert" method="post" class="row" enctype="multipart/form-data">
+            <div class="row">
+                <!-- Primary Key Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Primary Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="RotaAna.COMCODE"
+                                                asp-items="Model.CompanyList"
+                                                class="form-select border-0 shadow @(Model.RotaAna.ROTDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.RotaAna.ROTDOCTYPE != null)">
+                                            <option disabled selected>-- Select Company --</option>
+                                        </select>
+                                        @if (Model.RotaAna.ROTDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="RotaAna.COMCODE" />
+                                        }
+                                        <label asp-for="RotaAna.COMCODE" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.COMCODE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="RotaAna.ROTDOCTYPE" asp-items="Model.RotaList"
+                                                class="form-select border-0 shadow @(Model.RotaAna.ROTDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.RotaAna.ROTDOCTYPE != null)">
+                                            <option disabled selected>-- Select Rota Type --</option>
+                                        </select>
+                                        @if (Model.RotaAna.ROTDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="RotaAna.ROTDOCTYPE" />
+                                        }
+                                        <label asp-for="RotaAna.ROTDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.ROTDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.ROTDOCNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.ROTDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.ROTDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.ROTDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="RotaAna.MATDOCTYPE" asp-items="Model.MaterialTypeList"
+                                                class="form-select border-0 shadow @(Model.RotaAna.ROTDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.RotaAna.ROTDOCTYPE != null)">
+                                            <option disabled selected>-- Select Material Type --</option>
+                                        </select>
+                                        @if (Model.RotaAna.BOMDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="RotaAna.MATDOCTYPE" />
+                                        }
+                                        <label asp-for="RotaAna.MATDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.MATDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.MATDOCNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.ROTDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.MATDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.MATDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.OPRNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.ROTDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.OPRNUM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.OPRNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="RotaAna.BOMDOCTYPE" asp-items="Model.BOMList"
+                                                class="form-select border-0 shadow @(Model.RotaAna.ROTDOCTYPE != null ? "bg-white" : "")"
+                                                style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1; -webkit-appearance: none;" : "")"
+                                                disabled="@(Model.RotaAna.ROTDOCTYPE != null)">
+                                            <option disabled selected>-- Select Work Center Type --</option>
+                                        </select>
+                                        @if (Model.RotaAna.ROTDOCTYPE != null)
+                                        {
+                                            <input type="hidden" asp-for="RotaAna.BOMDOCTYPE" />
+                                        }
+                                        <label asp-for="RotaAna.BOMDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.BOMDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.BOMDOCNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.ROTDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.BOMDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.BOMDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.CONTENTNUM"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.ROTDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.ROTDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.CONTENTNUM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.CONTENTNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date Range Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-info">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">Date Range</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.ROTDOCFROM" type="date"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.WCMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.WCMDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.ROTDOCFROM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.ROTDOCFROM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.ROTDOCUNTIL" type="date"
+                                               class="form-control border-0 shadow bg-white"
+                                               style="@(Model.RotaAna.WCMDOCTYPE != null ? "opacity: 1;" : "")"
+                                               readonly="@(Model.RotaAna.WCMDOCTYPE != null)" />
+                                        <label asp-for="RotaAna.ROTDOCUNTIL" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.ROTDOCUNTIL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-success">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Additional Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="RotaAna.WCMDOCTYPE" asp-items="Model.WorkCenterList" class="form-control border-0 shadow">
+                                            <option disabled selected>-- Select Work Center Type --</option>
+                                        </select>
+                                        <label asp-for="RotaAna.WCMDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.WCMDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.WCMDOCNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.WCMDOCNUM" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.WCMDOCNUM" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select asp-for="RotaAna.OPRDOCTYPE" asp-items="Model.OperationList" class="form-control border-0 shadow">
+                                            <option disabled selected>-- Select Work Center Type --</option>
+                                        </select>
+                                        <label asp-for="RotaAna.OPRDOCTYPE" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.OPRDOCTYPE" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.COMPONENT" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.COMPONENT" class="ms-2"></label>
+                                        <span asp-validation-for="RotaAna.COMPONENT" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.QUANTITY" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.QUANTITY" class="ms-2">Quality</label>
+                                        <span asp-validation-for="RotaAna.QUANTITY" class="text-danger"></span>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.DRAWNUM" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.DRAWNUM" class="ms-2">Draw Number</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.SETUPTIME" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.SETUPTIME" class="ms-2">Setup Time</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.MACHINETIME" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.MACHINETIME" class="ms-2">Machine Time Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.LABOURTIME" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.LABOURTIME" class="ms-2">Labour Time</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="RotaAna.COMPONENT_QUANTITY" class="form-control border-0 shadow" />
+                                        <label asp-for="RotaAna.COMPONENT_QUANTITY" class="ms-2">Component Quality</label>
+                                        <span asp-validation-for="RotaAna.COMPONENT_QUANTITY" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Section -->
+                <div class="col-12 mb-4">
+                    <div class="card border-secondary">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="RotaAna.ISDELETED" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="RotaAna.ISDELETED">Is Deleted</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="RotaAna.ISPASSIVE" class="form-check-input" type="checkbox" />
+                                        <label class="form-check-label" asp-for="RotaAna.ISPASSIVE">Is Passive</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" asp-for="RotaAna.RowVersion" />
+
+                <!-- Action Buttons -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <button type="submit" class="btn btn-primary form-control">
+                                @(Model.RotaAna.WCMDOCTYPE == null ? "Create" : "Update")
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a asp-controller="RotaAna" asp-action="Index" class="btn btn-secondary border form-control">
+                                Back to List
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

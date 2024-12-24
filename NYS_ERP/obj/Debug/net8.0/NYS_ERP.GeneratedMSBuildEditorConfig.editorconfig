@@ -198,6 +198,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/NYSERP/NYS_ERP/Views/RotaAna/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YUFuYVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NYSERP/NYS_ERP/Views/RotaAna/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YUFuYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NYSERP/NYS_ERP/Views/RotaAna/Upsert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YUFuYVxVcHNlcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/NYSERP/NYS_ERP/Views/Rota/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
