@@ -5,17 +5,43 @@ $(document).ready(function () {
 
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'copy',
+                className: 'btn btn-secondary btn-sm',
+                text: '<i class="bi bi-clipboard"></i> Copy'
+            },
+            {
+                extend: 'excel',
+                className: 'btn btn-secondary btn-sm',
+                text: '<i class="bi bi-file-earmark-excel"></i> Excel'
+            },
+            {
+                extend: 'pdf',
+                className: 'btn btn-secondary btn-sm',
+                text: '<i class="bi bi-file-earmark-pdf"></i> PDF'
+            },
+            {
+                extend: 'print',
+                className: 'btn btn-secondary btn-sm',
+                text: '<i class="bi bi-printer"></i> Print'
+            }
+        ],
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/en.json"
+        },
         "ajax": {
-            url: '/rota/getall',
+            url: '/workcenter/getall',
             dataSrc: 'data'  
         },
         "columns": [
             {
-                data: 'rotaCode',
+                data: 'wcCode',
                 "width": "15%"
             },
             {
-                data: 'rotaText',
+                data: 'wcText',
                 "width": "25%"
             },
             {
@@ -30,10 +56,10 @@ function loadDataTable() {
                 "width": "10%"
             },
             {
-                data: 'rotaCode',
+                data: 'wcCode',
                 "render": function (data) {
                     return `<div class="btn-group w-100" role="group">
-                        <a href="/rota/edit?rotaCode=${data}" class="btn btn-primary mx-2">
+                        <a href="/workcenter/edit?wcCode=${data}" class="btn btn-primary mx-2">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
                         <a href="javascript:void(0);" class="btn btn-danger mx-2 delete-btn" data-id="${data}">
@@ -47,7 +73,7 @@ function loadDataTable() {
     });
 
     $('#tblData').on('click', '.delete-btn', function () {
-        var RotatCode = $(this).data('id');
-        window.location.href = `/rota/delete?rotaCode=${RotatCode}`;
+        var workCode = $(this).data('id');
+        window.location.href = `/workcenter/delete?wcCode=${workCode}`;
     });
 }

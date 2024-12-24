@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WD5kBKqcf3XzBB4/3LSg78YEsWpk9WU2wTphA43zXU0=",
+  "Hash": "mJ/lxPel0hdsXj5PyV6hETfNVsYfedDuJEgy++bF3vc=",
   "Source": "NYS_ERP",
   "BasePath": "_content/NYS_ERP",
   "Mode": "Default",
@@ -150,12 +150,12 @@
       "OriginalItemSpec": "wwwroot\\js\\bom_ua.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\cities.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\city.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/cities.js",
+      "RelativePath": "js/city.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -166,15 +166,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\cities.js"
+      "OriginalItemSpec": "wwwroot\\js\\city.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\cocenter.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\companies.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/cocenter.js",
+      "RelativePath": "js/companies.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -185,15 +185,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\cocenter.js"
+      "OriginalItemSpec": "wwwroot\\js\\companies.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\company.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\costcenter.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/company.js",
+      "RelativePath": "js/costcenter.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -204,15 +204,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\company.js"
+      "OriginalItemSpec": "wwwroot\\js\\costcenter.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\countries.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\country.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/countries.js",
+      "RelativePath": "js/country.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -223,15 +223,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\countries.js"
+      "OriginalItemSpec": "wwwroot\\js\\country.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\lang.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\language.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/lang.js",
+      "RelativePath": "js/language.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -242,15 +242,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\lang.js"
+      "OriginalItemSpec": "wwwroot\\js\\language.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\materialt.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\material.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/materialt.js",
+      "RelativePath": "js/material.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -261,15 +261,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\materialt.js"
+      "OriginalItemSpec": "wwwroot\\js\\material.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\opera.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\operation.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/opera.js",
+      "RelativePath": "js/operation.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -280,15 +280,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\opera.js"
+      "OriginalItemSpec": "wwwroot\\js\\operation.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\rotalar.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\rota.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/rotalar.js",
+      "RelativePath": "js/rota.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -299,7 +299,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\rotalar.js"
+      "OriginalItemSpec": "wwwroot\\js\\rota.js"
     },
     {
       "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\site.js",
@@ -321,12 +321,12 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\unitler.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\unit.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/unitler.js",
+      "RelativePath": "js/unit.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -337,15 +337,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\unitler.js"
+      "OriginalItemSpec": "wwwroot\\js\\unit.js"
     },
     {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\wocenter.js",
+      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\workcenter.js",
       "SourceId": "NYS_ERP",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
       "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/wocenter.js",
+      "RelativePath": "js/workcenter.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -356,7 +356,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\wocenter.js"
+      "OriginalItemSpec": "wwwroot\\js\\workcenter.js"
     },
     {
       "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\workCenterAna.js",

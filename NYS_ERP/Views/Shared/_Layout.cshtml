@@ -61,36 +61,35 @@
     </head>
     <body>
         <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    
-                    <div class="logo">
-                        <img src="img/erp.png" alt="NYS ERP Logo" style="width: 40px; height: 40px;" class="rounded-circle mr-2">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <div class="logo">
+                        <img src="~/img/erp.png" alt="NYS ERP Logo" style="width: 40px; height: 40px;" class="rounded-circle mr-2">
                         <span>NYS</span>ERP
-                    </div>
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="position-absolute start-50 translate-middle-x">
-                    <a href="/" class="btn btn-primary btn-lg shadow-sm rounded-pill">
-                        <i class="bi bi-house-door-fill me-2"></i>
-                        Home
+                        </div>
                     </a>
-                </div>
 
-                <div class="sidebar-footer">
-                    <button class="close-app-btn" onclick="window.close()">
-                        <i class="bi bi-power"></i>
-                        <span>Close App</span>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <div class="position-absolute start-50 translate-middle-x">
+                        <a href="/" class="btn btn-primary btn-lg shadow-sm rounded-pill">
+                            <i class="bi bi-house-door-fill me-2"></i>
+                            Home
+                        </a>
+                    </div>
+
+                    <div class="sidebar-footer">
+                        <button class="close-app-btn" onclick="window.close()">
+                            <i class="bi bi-power"></i>
+                            <span>Close App</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
         </header>
         <div class="container">
             <main role="main" class="pb-3">

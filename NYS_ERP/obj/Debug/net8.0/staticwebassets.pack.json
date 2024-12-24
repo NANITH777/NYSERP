@@ -25,52 +25,52 @@
       "PackagePath": "staticwebassets\\js\\bom_ua.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\cities.js",
-      "PackagePath": "staticwebassets\\js\\cities.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\city.js",
+      "PackagePath": "staticwebassets\\js\\city.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\cocenter.js",
-      "PackagePath": "staticwebassets\\js\\cocenter.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\companies.js",
+      "PackagePath": "staticwebassets\\js\\companies.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\company.js",
-      "PackagePath": "staticwebassets\\js\\company.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\costcenter.js",
+      "PackagePath": "staticwebassets\\js\\costcenter.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\countries.js",
-      "PackagePath": "staticwebassets\\js\\countries.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\country.js",
+      "PackagePath": "staticwebassets\\js\\country.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\lang.js",
-      "PackagePath": "staticwebassets\\js\\lang.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\language.js",
+      "PackagePath": "staticwebassets\\js\\language.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\materialt.js",
-      "PackagePath": "staticwebassets\\js\\materialt.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\material.js",
+      "PackagePath": "staticwebassets\\js\\material.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\opera.js",
-      "PackagePath": "staticwebassets\\js\\opera.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\operation.js",
+      "PackagePath": "staticwebassets\\js\\operation.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\rotalar.js",
-      "PackagePath": "staticwebassets\\js\\rotalar.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\rota.js",
+      "PackagePath": "staticwebassets\\js\\rota.js"
     },
     {
       "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\unitler.js",
-      "PackagePath": "staticwebassets\\js\\unitler.js"
-    },
-    {
-      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\wocenter.js",
-      "PackagePath": "staticwebassets\\js\\wocenter.js"
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\unit.js",
+      "PackagePath": "staticwebassets\\js\\unit.js"
     },
     {
       "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\workCenterAna.js",
       "PackagePath": "staticwebassets\\js\\workCenterAna.js"
+    },
+    {
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\workcenter.js",
+      "PackagePath": "staticwebassets\\js\\workcenter.js"
     },
     {
       "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\lib\\bootstrap\\LICENSE",
