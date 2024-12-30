@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NYS_ERP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d92cdfef2c943b5cf61e0fee644eb0bfa6c1a1e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fab42f92f5b71be6b672bff30a98fa53eb8d8d08")]
 [assembly: System.Reflection.AssemblyProductAttribute("NYS_ERP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NYS_ERP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -23,6 +23,23 @@ namespace NYS_ERP.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            if (username == "ERP" && password == "erp123")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            TempData["Error"] = "Invalid credentials";
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
