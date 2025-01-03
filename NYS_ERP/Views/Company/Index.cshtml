@@ -45,10 +45,10 @@
                     <td>@company.ADDRESS1</td>
                     <td>@company.ADDRESS2</td>
                     <td class="text-center">
-                        <a asp-controller="Company" asp-action="Edit" asp-route-id="@company.COMCODE" class="btn btn-sm btn-primary">
+                        <a asp-controller="Company" asp-action="Edit" asp-route-comCode="@company.COMCODE" class="btn btn-sm btn-primary">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
-                        <a asp-controller="Company" asp-action="Delete" asp-route-id="@company.COMCODE" class="btn btn-sm btn-danger">
+                        <a asp-controller="Company" asp-action="Delete" asp-route-comCode="@company.COMCODE" class="btn btn-sm btn-danger">
                             <i class="bi bi-trash-fill"></i>Delete
                         </a>
                     </td>

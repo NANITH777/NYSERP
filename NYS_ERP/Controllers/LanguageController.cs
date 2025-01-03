@@ -197,18 +197,26 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(LanguageVM languageVM)
         {
-            var languageToDelete = _unitOfWork.Language.Get(u => u.LANCODE == languageVM.Language.LANCODE);
-
-            if (languageToDelete == null)
+            try
             {
-                return NotFound();
+                var languageToDelete = _unitOfWork.Language.Get(u => u.LANCODE == languageVM.Language.LANCODE);
+
+                if (languageToDelete == null)
+                {
+                    return NotFound();
+                }
+
+                _unitOfWork.Language.Remove(languageToDelete);
+                _unitOfWork.Save();
+
+                TempData["success"] = "Language deleted successfully!";
+                return RedirectToAction("Index");
             }
-
-            _unitOfWork.Language.Remove(languageToDelete);
-            _unitOfWork.Save();
-
-            TempData["success"] = "Language deleted successfully!";
-            return RedirectToAction("Index");
+            catch (DbUpdateException)
+            {
+                TempData["error"] = "Cannot delete this language because it is being used in other records. Please delete the related records first.";
+                return RedirectToAction("Index");
+            }
         }
 
         #region API CALLS

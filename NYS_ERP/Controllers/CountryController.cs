@@ -164,18 +164,24 @@ namespace NYS_ERP.Controllers
         [HttpPost]
         public IActionResult Delete(CountryVM countryVM)
         {
-            var countryToDelete = _unitOfWork.Country.Get(u => u.COUNTRYCODE == countryVM.Country.COUNTRYCODE);
-
-            if (countryToDelete == null)
+            try
             {
-                return NotFound();
+                var countryToDelete = _unitOfWork.Country.Get(u => u.COUNTRYCODE == countryVM.Country.COUNTRYCODE); 
+                if (countryToDelete == null)
+                {
+                    return NotFound();
+                }
+
+                _unitOfWork.Country.Remove(countryToDelete);
+                _unitOfWork.Save();
+                TempData["success"] = "Country deleted successfully!";
+                return RedirectToAction("Index");
             }
-
-            _unitOfWork.Country.Remove(countryToDelete);
-            _unitOfWork.Save();
-
-            TempData["success"] = "Country deleted successfully!";
-            return RedirectToAction("Index");
+            catch (DbUpdateException)
+            {
+                TempData["error"] = "Cannot delete this Country because it is being used in other records. Please delete the related records first.";
+                return RedirectToAction("Index");
+            }
         }
 
         #region API CALLS

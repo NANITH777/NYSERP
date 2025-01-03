@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NYS_ERP.Models;
+using NYS_ERP.Models.ViewModels;
 using NYS_ERP.Repository.IRepository;
 
 namespace NYS_ERP.Controllers
@@ -113,15 +115,23 @@ namespace NYS_ERP.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(string? comCode)
         {
-            Company? obj = _unitOfWork.Company.Get(u => u.COMCODE == comCode);
-            if (obj == null)
+            try
             {
-                return NotFound();
+                Company? obj = _unitOfWork.Company.Get(u => u.COMCODE == comCode);
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+                _unitOfWork.Company.Remove(obj);
+                _unitOfWork.Save();
+                TempData["success"] = "Company deleted successfully";
+                return RedirectToAction("Index");
             }
-            _unitOfWork.Company.Remove(obj);
-            _unitOfWork.Save();
-            TempData["success"] = "Company deleted successfully";
-            return RedirectToAction("Index");
+            catch (DbUpdateException)
+            {
+                TempData["error"] = "Cannot delete this Company because it is being used in other records. Please delete the related records first.";
+                return RedirectToAction("Index");
+            }
         }
 
         #region API CALLS
