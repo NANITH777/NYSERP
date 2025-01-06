@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\js\\operation.js"
     },
     {
+      "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\react\\AnalyticsDashboard.jsx",
+      "PackagePath": "staticwebassets\\js\\react\\AnalyticsDashboard.jsx"
+    },
+    {
       "Id": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\rota.js",
       "PackagePath": "staticwebassets\\js\\rota.js"
     },

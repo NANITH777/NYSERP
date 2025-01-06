@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Analytics Dashboard";
+}
+
+<div id="analytics-dashboard"></div>
+
+@section Scripts {
+    @* Scripts React nécessaires *@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.12.0/Recharts.min.js"></script>
+
+    @* Vos composants React *@
+    <script src="~/js/react/AnalyticsDashboard.jsx"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const rootElement = document.getElementById('analytics-dashboard');
+            const root = ReactDOM.createRoot(rootElement);
+            root.render(React.createElement(AnalyticsDashboard));
+        });
+    </script>
+}
