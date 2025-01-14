@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hTvdK+1SuHjQdD/kZja8AaGIsFP9obLVQ5HwYDn2FGI=",
+  "Hash": "mJ/lxPel0hdsXj5PyV6hETfNVsYfedDuJEgy++bF3vc=",
   "Source": "NYS_ERP",
   "BasePath": "_content/NYS_ERP",
   "Mode": "Default",
@@ -281,25 +281,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\operation.js"
-    },
-    {
-      "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\react\\AnalyticsDashboard.jsx",
-      "SourceId": "NYS_ERP",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\NYSERP\\NYS_ERP\\wwwroot\\",
-      "BasePath": "_content/NYS_ERP",
-      "RelativePath": "js/react/AnalyticsDashboard.jsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\react\\AnalyticsDashboard.jsx"
     },
     {
       "Identity": "D:\\NYSERP\\NYS_ERP\\wwwroot\\js\\rota.js",

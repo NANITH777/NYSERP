@@ -85,10 +85,6 @@ update-database
 - **Icons**: Bootstrap Icons
 - **Authentication**: ASP.NET Core Identity
 
-## 📱 Screenshots
-
-[Add screenshots of your application here]
-
 ## 🔒 Security Features
 
 - Secure authentication system
