@@ -237,42 +237,6 @@ namespace NYS_ERP.Controllers
             return Json(new { data = formattedData });
         }
 
-        //[HttpDelete]
-        //public IActionResult Delete(string lanCode)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(lanCode))
-        //        {
-        //            _logger.LogWarning($"Delete attempted with empty language code");
-        //            return BadRequest(new { success = false, message = "Language Code is required" });
-        //        }
-
-        //        var languageToBeDeleted = _unitOfWork.Language.Get(u => u.LANCODE == lanCode);
-        //        if (languageToBeDeleted == null)
-        //        {
-        //            _logger.LogWarning($"Attempted to delete non-existent language: {lanCode}");
-        //            return NotFound(new { success = false, message = "Record not found" });
-        //        }
-
-        //        _unitOfWork.Language.Remove(languageToBeDeleted);
-        //        _unitOfWork.Save();
-
-        //        _logger.LogInformation($"Language deleted successfully: {lanCode}");
-        //        return Ok(new { success = true, message = "Language deleted successfully" });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, $"Error deleting language: {lanCode}");
-        //        return StatusCode(500, new
-        //        {
-        //            success = false,
-        //            message = "Failed to delete language",
-        //            details = ex.Message
-        //        });
-        //    }
-        //}
-
 
         #endregion
     }
